@@ -132,7 +132,7 @@ namespace Summarizer.Presentation.ViewModel
         /// </summary>
         public static void Cleanup()
         {
-            ClearPage2();
+            ClearMain();
             ClearPage2();
         }
 
