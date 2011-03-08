@@ -56,6 +56,7 @@ namespace Summarizer.Presentation.ViewModel
     public class ViewModelLocator
     {
         private static MainViewModel _main;
+        private static Page2ViewModel _pg2ViewModel;
 
         /// <summary>
         /// Initializes a new instance of the ViewModelLocator class.
@@ -72,6 +73,67 @@ namespace Summarizer.Presentation.ViewModel
             ////}
 
             CreateMain();
+            CreatePage2();
+        }
+
+
+        /// <summary>
+        /// Gets the Page2 property.
+        /// </summary>
+        public static Page2ViewModel Page2Static
+        {
+            get
+            {
+                if (_pg2ViewModel == null)
+                {
+                    CreatePage2();
+                }
+
+                return _pg2ViewModel;
+            }
+        }
+
+        /// <summary>
+        /// Gets the Page2 property.
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
+            "CA1822:MarkMembersAsStatic",
+            Justification = "This non-static member is needed for data binding purposes.")]
+        public Page2ViewModel Page2
+        {
+            get
+            {
+                return Page2Static;
+            }
+        }
+
+        /// <summary>
+        /// Provides a deterministic way to delete the Page2 property.
+        /// </summary>
+        public static void ClearPage2()
+        {
+            _pg2ViewModel.Cleanup();
+            _pg2ViewModel = null;
+        }
+
+        /// <summary>
+        /// Provides a deterministic way to create the Page2 property.
+        /// </summary>
+        public static void CreatePage2()
+        {
+            if (_pg2ViewModel == null)
+            {
+                _pg2ViewModel = new Page2ViewModel();
+            }
+        }
+
+        /// <summary>
+        /// Cleans up all the resources.
+        /// </summary>
+        public static void Cleanup()
+        {
+            ClearPage2();
+            ClearPage2();
         }
 
         /// <summary>
@@ -122,14 +184,6 @@ namespace Summarizer.Presentation.ViewModel
             {
                 _main = new MainViewModel();
             }
-        }
-
-        /// <summary>
-        /// Cleans up all the resources.
-        /// </summary>
-        public static void Cleanup()
-        {
-            ClearMain();
         }
     }
 }
