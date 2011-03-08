@@ -1,4 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using System.Windows;
 
 namespace Summarizer.Presentation.ViewModel
 {
@@ -40,11 +42,18 @@ namespace Summarizer.Presentation.ViewModel
             }
         }
 
+        public RelayCommand Page2Command
+        {
+            get;
+            private set;
+        }
+
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
         public MainViewModel()
         {
+            Page2Command = new RelayCommand(() => GoToPage2());
             if (IsInDesignMode)
             {
                 // Code runs in Blend --> create design time data.
@@ -53,6 +62,12 @@ namespace Summarizer.Presentation.ViewModel
             {
                 // Code runs "for real"
             }
+        }
+
+        private object GoToPage2()
+        {
+            MessageBox.Show("Navigate to Page 2!");
+            return null;
         }
 
         ////public override void Cleanup()

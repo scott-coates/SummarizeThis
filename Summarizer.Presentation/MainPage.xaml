@@ -1,10 +1,11 @@
-﻿<phone:PhoneApplicationPage x:Class="Summarizer.Presentation.MainPage"
+﻿<phone:PhoneApplicationPage
                             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                             xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
                             xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
                             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            xmlns:Custom="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:GalaSoft_MvvmLight_Command="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WP7" x:Class="Summarizer.Presentation.MainPage"
                             FontFamily="{StaticResource PhoneFontFamilyNormal}"
                             FontSize="{StaticResource PhoneFontSizeNormal}"
                             Foreground="{StaticResource PhoneForegroundBrush}"
@@ -39,14 +40,14 @@
 
 		<!--ContentPanel - place additional content here-->
 		<Grid x:Name="ContentGrid"
-		      Grid.Row="1">
-
-			<TextBlock Text="{Binding Welcome}"
-			           Style="{StaticResource PhoneTextNormalStyle}"
-			           HorizontalAlignment="Center"
-			           VerticalAlignment="Center"
-			           FontSize="40" />
-
+		      Grid.Row="2" Grid.Column="1" Canvas.ZIndex="7">
+			<Button x:Name="btnPage2" Content="Page 2" Height="75" Margin="39,42,84,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="286">
+				<Custom:Interaction.Triggers>
+					<Custom:EventTrigger EventName="Click">
+						<GalaSoft_MvvmLight_Command:EventToCommand x:Name="btnPage2Clicked" Command="{Binding Page2Command, Mode=OneWay}"/>
+					</Custom:EventTrigger>
+				</Custom:Interaction.Triggers>
+			</Button>
 		</Grid>
 	</Grid>
     
