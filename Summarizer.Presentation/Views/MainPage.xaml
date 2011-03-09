@@ -49,6 +49,7 @@
 				</Custom:Interaction.Triggers>
 			</Button>
 			<TextBox x:Name="txtFull" Margin="75,83,119,0" TextWrapping="Wrap" VerticalAlignment="Top" ToolTipService.ToolTip="Enter in text to summarize" Text="{Binding Path=InputText, Mode=TwoWay}" />
+			<TextBox x:Name="txtNoOfSentences" Margin="75,155,119,0" TextWrapping="Wrap" VerticalAlignment="Top" ToolTipService.ToolTip="Enter in text to summarize" Text="{Binding NumberOfReturnedSentences, Mode=TwoWay}" />
 		</Grid>
 	</Grid>
     

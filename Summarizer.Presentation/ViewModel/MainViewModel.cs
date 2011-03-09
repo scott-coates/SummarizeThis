@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight.Command;
 using System.Windows;
 using Summarizer.Presentation.Messaging;
 using GalaSoft.MvvmLight.Messaging;
+using NClassifier.Summarizer;
 
 namespace Summarizer.Presentation.ViewModel
 {
@@ -20,6 +21,8 @@ namespace Summarizer.Presentation.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
+        private SimpleSummarizer _summarizer = new SimpleSummarizer();
+
         public string ApplicationTitle
         {
             get
@@ -37,6 +40,8 @@ namespace Summarizer.Presentation.ViewModel
         }
 
         public string InputText { get; set; }
+
+        public int NumberOfReturnedSentences { get; set; }
 
         public RelayCommand SummarizeCommand
         {
@@ -63,7 +68,7 @@ namespace Summarizer.Presentation.ViewModel
 
         private void Summarize()
         {
-            InputText.ToUpper();
+            _summarizer.Summarize(InputText, NumberOfReturnedSentences).ToString();
             var msg = new GoToPageMessage() { PageName = "SummaryPage" };
             Messenger.Default.Send<GoToPageMessage>(msg);
         }
