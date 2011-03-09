@@ -56,7 +56,7 @@ namespace Summarizer.Presentation.ViewModel
     public class ViewModelLocator
     {
         private static MainViewModel _main;
-        private static Page2ViewModel _pg2ViewModel;
+        private static SummaryViewModel _summaryViewModel;
 
         /// <summary>
         /// Initializes a new instance of the ViewModelLocator class.
@@ -73,23 +73,23 @@ namespace Summarizer.Presentation.ViewModel
             ////}
 
             CreateMain();
-            CreatePage2();
+            CreateSummary();
         }
 
 
         /// <summary>
         /// Gets the Page2 property.
         /// </summary>
-        public static Page2ViewModel Page2Static
+        public static SummaryViewModel Page2Static
         {
             get
             {
-                if (_pg2ViewModel == null)
+                if (_summaryViewModel == null)
                 {
-                    CreatePage2();
+                    CreateSummary();
                 }
 
-                return _pg2ViewModel;
+                return _summaryViewModel;
             }
         }
 
@@ -99,7 +99,7 @@ namespace Summarizer.Presentation.ViewModel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
             "CA1822:MarkMembersAsStatic",
             Justification = "This non-static member is needed for data binding purposes.")]
-        public Page2ViewModel Page2
+        public SummaryViewModel Summary
         {
             get
             {
@@ -110,20 +110,20 @@ namespace Summarizer.Presentation.ViewModel
         /// <summary>
         /// Provides a deterministic way to delete the Page2 property.
         /// </summary>
-        public static void ClearPage2()
+        public static void ClearSummary()
         {
-            _pg2ViewModel.Cleanup();
-            _pg2ViewModel = null;
+            _summaryViewModel.Cleanup();
+            _summaryViewModel = null;
         }
 
         /// <summary>
         /// Provides a deterministic way to create the Page2 property.
         /// </summary>
-        public static void CreatePage2()
+        public static void CreateSummary()
         {
-            if (_pg2ViewModel == null)
+            if (_summaryViewModel == null)
             {
-                _pg2ViewModel = new Page2ViewModel();
+                _summaryViewModel = new SummaryViewModel();
             }
         }
 
@@ -133,7 +133,7 @@ namespace Summarizer.Presentation.ViewModel
         public static void Cleanup()
         {
             ClearMain();
-            ClearPage2();
+            ClearSummary();
         }
 
         /// <summary>

@@ -14,12 +14,12 @@ namespace Summarizer.Presentation.ViewModel
     /// See http://www.galasoft.ch/mvvm/getstarted
     /// </para>
     /// </summary>
-    public class Page2ViewModel : ViewModelBase
+    public class SummaryViewModel : ViewModelBase
     {
         /// <summary>
         /// Initializes a new instance of the Page2ViewModel class.
         /// </summary>
-        public Page2ViewModel()
+        public SummaryViewModel()
         {
             ////if (IsInDesignMode)
             ////{
@@ -50,7 +50,7 @@ namespace Summarizer.Presentation.ViewModel
         {
             get
             {
-                return "Welcome to Page 2";
+                return "Welcome to Page 2!";
             }
         }
         ////public override void Cleanup()

@@ -24,7 +24,7 @@ namespace Summarizer.Presentation.ViewModel
         {
             get
             {
-                return "MVVM LIGHT";
+                return "Summarize This!";
             }
         }
 
@@ -32,7 +32,7 @@ namespace Summarizer.Presentation.ViewModel
         {
             get
             {
-                return "My page:";
+                return "Enter Text:";
             }
         }
 
