@@ -44,11 +44,11 @@
 			<Button x:Name="btnPage2" Content="Summarize!" Margin="39,249,84,293" HorizontalAlignment="Center" Width="286">
 				<Custom:Interaction.Triggers>
 					<Custom:EventTrigger EventName="Click">
-						<GalaSoft_MvvmLight_Command:EventToCommand x:Name="btnPage2Clicked" Command="{Binding Page2Command, Mode=OneWay}"/>
+						<GalaSoft_MvvmLight_Command:EventToCommand x:Name="btnPage2Clicked" Command="{Binding SummarizeCommand, Mode=OneWay}"/>
 					</Custom:EventTrigger>
 				</Custom:Interaction.Triggers>
 			</Button>
-			<TextBox x:Name="txtFull" Margin="75,83,119,0" TextWrapping="Wrap" VerticalAlignment="Top" ToolTipService.ToolTip="Enter in text to summarize"/>
+			<TextBox x:Name="txtFull" Margin="75,83,119,0" TextWrapping="Wrap" VerticalAlignment="Top" ToolTipService.ToolTip="Enter in text to summarize" Text="{Binding Path=InputText, Mode=TwoWay}" />
 		</Grid>
 	</Grid>
     

@@ -36,15 +36,9 @@ namespace Summarizer.Presentation.ViewModel
             }
         }
 
-        public string Welcome
-        {
-            get
-            {
-                return "Welcome to MVVM Light";
-            }
-        }
+        public string InputText { get; set; }
 
-        public RelayCommand Page2Command
+        public RelayCommand SummarizeCommand
         {
             get;
             private set;
@@ -55,7 +49,7 @@ namespace Summarizer.Presentation.ViewModel
         /// </summary>
         public MainViewModel()
         {
-            Page2Command = new RelayCommand(() => GoToSummaryPage());
+            SummarizeCommand = new RelayCommand(() => Summarize());
 
             if (IsInDesignMode)
             {
@@ -67,8 +61,9 @@ namespace Summarizer.Presentation.ViewModel
             }
         }
 
-        private void GoToSummaryPage()
+        private void Summarize()
         {
+            InputText.ToUpper();
             var msg = new GoToPageMessage() { PageName = "SummaryPage" };
             Messenger.Default.Send<GoToPageMessage>(msg);
         }

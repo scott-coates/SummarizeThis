@@ -2,6 +2,8 @@
 using GalaSoft.MvvmLight.Messaging;
 using Summarizer.Presentation.Messaging;
 using System.Text;
+using System;
+using Summarizer.Presentation.Extensions;
 
 namespace Summarizer.Presentation
 {
@@ -12,15 +14,7 @@ namespace Summarizer.Presentation
         {
             InitializeComponent();
 
-            Messenger.Default.Register<GoToPageMessage>(this, (action) => ReceiveMessage(action));
-        }
-        private object ReceiveMessage(GoToPageMessage action)
-        {
-            var sb = new StringBuilder("/Views/");
-            sb.Append(action.PageName);
-            sb.Append(".xaml");
-            NavigationService.Navigate(new System.Uri(sb.ToString(), System.UriKind.Relative));
-            return null;
+            Messenger.Default.Register<GoToPageMessage>(this, (action) => action.NavigateToPage(NavigationService));
         }
     }
 }
