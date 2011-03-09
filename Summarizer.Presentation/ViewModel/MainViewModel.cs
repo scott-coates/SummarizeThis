@@ -55,7 +55,7 @@ namespace Summarizer.Presentation.ViewModel
         /// </summary>
         public MainViewModel()
         {
-            Page2Command = new RelayCommand(() => GoToPage2());
+            Page2Command = new RelayCommand(() => GoToSummaryPage());
 
             if (IsInDesignMode)
             {
@@ -67,11 +67,10 @@ namespace Summarizer.Presentation.ViewModel
             }
         }
 
-        private object GoToPage2()
+        private void GoToSummaryPage()
         {
-            var msg = new GoToPageMessage() { PageName = "Page2" };
+            var msg = new GoToPageMessage() { PageName = "SummaryPage" };
             Messenger.Default.Send<GoToPageMessage>(msg);
-            return null;
         }
 
         ////public override void Cleanup()
