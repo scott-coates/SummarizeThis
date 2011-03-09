@@ -15,4 +15,14 @@ namespace Summarizer.Presentation.Messaging
     {
         public string PageName { get; set; }
     }
+
+    public class GoToPageMessage<T> : GoToPageMessage
+    {
+        public T Data { get; private set; }
+
+        public GoToPageMessage(T data)
+        {
+            Data = data;
+        }
+    }
 }

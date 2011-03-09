@@ -34,7 +34,7 @@ namespace Summarizer.Presentation.ViewModel
         {
             get
             {
-                return "MVVM LIGHT";
+                return "Summarize This!";
             }
         }
 
@@ -42,17 +42,12 @@ namespace Summarizer.Presentation.ViewModel
         {
             get
             {
-                return "Page 2";
+                return "Summary";
             }
         }
 
-        public string Welcome
-        {
-            get
-            {
-                return "Welcome to Page 2!";
-            }
-        }
+        public string SummarizedText { get; set; }
+        public int NumberOfSentences { get; set; }
         ////public override void Cleanup()
         ////{
         ////    // Clean own resources if needed

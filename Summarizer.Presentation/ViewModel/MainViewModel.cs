@@ -4,6 +4,7 @@ using System.Windows;
 using Summarizer.Presentation.Messaging;
 using GalaSoft.MvvmLight.Messaging;
 using NClassifier.Summarizer;
+using Summarizer.Presentation.Model;
 
 namespace Summarizer.Presentation.ViewModel
 {
@@ -68,9 +69,13 @@ namespace Summarizer.Presentation.ViewModel
 
         private void Summarize()
         {
-            _summarizer.Summarize(InputText, NumberOfReturnedSentences).ToString();
-            var msg = new GoToPageMessage() { PageName = "SummaryPage" };
-            Messenger.Default.Send<GoToPageMessage>(msg);
+            string summarizedText = _summarizer.Summarize(InputText, NumberOfReturnedSentences).ToString();
+            
+            var summary = new Summary(summarizedText, NumberOfReturnedSentences);
+
+            var msg = new GoToPageMessage<Summary>(summary) { PageName = "SummaryPage" };
+
+            Messenger.Default.Send(msg);
         }
 
         ////public override void Cleanup()

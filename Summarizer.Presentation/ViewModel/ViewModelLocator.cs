@@ -80,7 +80,7 @@ namespace Summarizer.Presentation.ViewModel
         /// <summary>
         /// Gets the Page2 property.
         /// </summary>
-        public static SummaryViewModel Page2Static
+        public static SummaryViewModel SummaryStatic
         {
             get
             {
@@ -103,7 +103,7 @@ namespace Summarizer.Presentation.ViewModel
         {
             get
             {
-                return Page2Static;
+                return SummaryStatic;
             }
         }
 

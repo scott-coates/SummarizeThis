@@ -38,11 +38,12 @@
 		<Grid x:Name="ContentGrid"
 		      Grid.Row="1">
 
-			<TextBlock Text="{Binding Welcome}"
+			<TextBlock x:Name="txtSummary" Text="{Binding SummarizedText}"
 			           Style="{StaticResource PhoneTextNormalStyle}"
-			           HorizontalAlignment="Center"
-			           VerticalAlignment="Center"
-			           FontSize="40" />
+			           FontSize="40" VerticalAlignment="Top" />
+			<TextBlock x:Name="txtSentences" Text="{Binding NumberOfSentences}"
+				Style="{StaticResource PhoneTextNormalStyle}"
+				FontSize="40" VerticalAlignment="Top" Margin="12,57,12,0" />
 
 		</Grid>
 	</Grid>

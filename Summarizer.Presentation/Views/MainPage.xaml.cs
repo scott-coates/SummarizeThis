@@ -4,6 +4,8 @@ using Summarizer.Presentation.Messaging;
 using System.Text;
 using System;
 using Summarizer.Presentation.Extensions;
+using Summarizer.Presentation.Model;
+using Summarizer.Presentation.ViewModel;
 
 namespace Summarizer.Presentation
 {
@@ -14,7 +16,14 @@ namespace Summarizer.Presentation
         {
             InitializeComponent();
 
-            Messenger.Default.Register<GoToPageMessage>(this, (action) => action.NavigateToPage(NavigationService));
+            Messenger.Default.Register<GoToPageMessage<Summary>>(this, (action) =>
+                {
+                    ViewModelLocator.SummaryStatic.SummarizedText = action.Data.SummarizedText;
+                    
+                    ViewModelLocator.SummaryStatic.NumberOfSentences = action.Data.ReturnedSentences;
+
+                    action.NavigateToPage(NavigationService);
+                });
         }
     }
 }
