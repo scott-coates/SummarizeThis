@@ -55,5 +55,15 @@ namespace SummarizeThis.Tests
 
             Assert.That(frequenices.Count == 2);
         }
+
+        [Test]
+        public void TestHowManyWordsToReturn()
+        {
+            var input = new Dictionary<string, int> { { "Foo", 1 }, { "Bar", 1 } };
+
+            var frequentWords = _frequencer.GetMostFrequentWords(0, input);
+
+            Assert.That(frequentWords.Count() == 0);
+        }
     }
 }

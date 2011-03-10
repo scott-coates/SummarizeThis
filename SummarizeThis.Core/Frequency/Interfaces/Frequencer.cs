@@ -30,7 +30,19 @@ namespace SummarizeThis.Core.Frequency.Interfaces
 
         public IEnumerable<string> GetMostFrequentWords(int howManyWords, Dictionary<string, int> wordFrequencies)
         {
-            return null;
+            var retVal = new List<string>();
+            //The logic is to grab the top x frequent words. We are not simply ordering by frequency, we're ordering by the 
+            //sequence of words entered by the user and frequency.
+
+            foreach (var word in wordFrequencies)
+            {
+                if (howManyWords < 1)
+                {
+                    break;
+                }
+            }
+
+            return retVal;
         }
     }
 }
