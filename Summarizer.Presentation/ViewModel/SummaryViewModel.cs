@@ -1,4 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Messaging;
+using Summarizer.Presentation.Model;
 
 namespace Summarizer.Presentation.ViewModel
 {
@@ -29,6 +31,7 @@ namespace Summarizer.Presentation.ViewModel
             ////{
             ////    // Code runs "for real": Connect to service, etc...
             ////}
+            Messenger.Default.Register<Summary>(this, FillSummary);
         }
         public string ApplicationTitle
         {
@@ -48,11 +51,18 @@ namespace Summarizer.Presentation.ViewModel
 
         public string SummarizedText { get; set; }
         public int NumberOfSentences { get; set; }
+
         ////public override void Cleanup()
         ////{
         ////    // Clean own resources if needed
 
         ////    base.Cleanup();
         ////}
+
+        private void FillSummary(Summary summary)
+        {
+            SummarizedText = summary.SummarizedText;
+            NumberOfSentences = summary.ReturnedSentences;
+        }
     }
 }

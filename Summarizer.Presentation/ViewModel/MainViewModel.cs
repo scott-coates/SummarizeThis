@@ -70,12 +70,14 @@ namespace Summarizer.Presentation.ViewModel
         private void Summarize()
         {
             string summarizedText = _summarizer.Summarize(InputText, NumberOfReturnedSentences).ToString();
-            
+
             var summary = new Summary(summarizedText, NumberOfReturnedSentences);
 
-            var msg = new GoToPageMessage<Summary>(summary) { PageName = "SummaryPage" };
+            var msg = new GoToPageMessage("SummaryPage");
 
             Messenger.Default.Send(msg);
+
+            Messenger.Default.Send(summary);
         }
 
         ////public override void Cleanup()
