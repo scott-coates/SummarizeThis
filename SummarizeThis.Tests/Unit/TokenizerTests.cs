@@ -19,7 +19,7 @@ namespace SummarizeThis.Tests.Unit
         public void Setup()
         {
             _stopWordService = new Mock<IStopWordService>();
-            _stopWordService.Setup(x => x.CleanStopWords(It.IsAny<IEnumerable<string>>())).Returns((IEnumerable<string> input) => input);
+            _stopWordService.Setup(x => x.CleanStopWords(It.IsAny<IEnumerable<string>>())).Returns((IEnumerable<string> input) => input); //just return
             _tokenizer = new Tokenizer(_stopWordService.Object);
         }
 
