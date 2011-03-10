@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using SummarizeThis.Core.Frequency.Interfaces;
 using SummarizeThis.Core.Tokenization.Interfaces;
 
-namespace SummarizeThis.Core.Frequency.Interfaces
+namespace SummarizeThis.Core.Frequency
 {
     public class Frequencer : IFrequencer
     {

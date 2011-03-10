@@ -45,16 +45,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Frequency\Interfaces\Frequencer.cs" />
+    <Compile Include="Frequency\Frequencer.cs" />
     <Compile Include="Frequency\Interfaces\IFrequencer.cs" />
     <Compile Include="StopWord\Interfaces\IStopWordProvider.cs" />
     <Compile Include="StopWord\Interfaces\IStopWordService.cs" />
-    <Compile Include="StopWord\Interfaces\StopWordService.cs" />
+    <Compile Include="StopWord\StopWordService.cs" />
     <Compile Include="Summarization\Interfaces\ISummarizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Summarization\Interfaces\Summarizer.cs" />
+    <Compile Include="Summarization\Summarizer.cs" />
     <Compile Include="Tokenization\Interfaces\ITokenizer.cs" />
-    <Compile Include="Tokenization\Interfaces\Tokenizer.cs" />
+    <Compile Include="Tokenization\Tokenizer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

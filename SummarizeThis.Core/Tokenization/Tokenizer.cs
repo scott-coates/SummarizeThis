@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using SummarizeThis.Core.Tokenization.Interfaces;
 
-namespace SummarizeThis.Core.Tokenization.Interfaces
+namespace SummarizeThis.Core.Tokenization
 {
     public class Tokenizer : ITokenizer
     {
