@@ -7,7 +7,7 @@ namespace SummarizeThis.Core.Frequency.Interfaces
 {
     public class Frequencer : IFrequencer
     {
-        private ITokenizer _tokenizer;
+        private readonly ITokenizer _tokenizer;
 
         public Frequencer(ITokenizer tokenizer)
         {
