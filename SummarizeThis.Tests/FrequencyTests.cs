@@ -103,11 +103,27 @@ namespace SummarizeThis.Tests
         }
 
         [Test]
-        public void OneSentenceMostFrequent()
+        public void OneSentenceMostFrequentNoWords()
         {
-            var sentencesWithMostFrequentWords = _frequencer.GetSentencesWithMostFrequentWords(new[] { "Hi" }, new string[] { });
+            var sentencesWithMostFrequentWords = _frequencer.GetSentencesWithMostFrequentWords(1, new[] { "Hi" }, new string[] { });
 
             Assert.That(sentencesWithMostFrequentWords.Count() == 0);
+        }
+
+        [Test]
+        public void OneSentenceOneFrequentWord()
+        {
+            var sentencesWithMostFrequentWords = _frequencer.GetSentencesWithMostFrequentWords(0, new[] { "Hi" }, new[] { "Hi" });
+
+            Assert.That(sentencesWithMostFrequentWords.Count() == 0);
+        }
+
+        [Test]
+        public void ReturnOneSentence()
+        {
+            var sentencesWithMostFrequentWords = _frequencer.GetSentencesWithMostFrequentWords(1, new[] { "Hi" }, new[] { "Hi" });
+
+            Assert.That(sentencesWithMostFrequentWords.Count() == 1);
         }
     }
 }

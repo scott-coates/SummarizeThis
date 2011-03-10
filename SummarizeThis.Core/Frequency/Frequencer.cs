@@ -37,11 +37,14 @@ namespace SummarizeThis.Core.Frequency
             return wordFrequencies.OrderByDescending(x => x.Value).Select(x => x.Key).Take(howManyWords);
         }
 
-        public IEnumerable<string> GetSentencesWithMostFrequentWords(IEnumerable<string> sentences, IEnumerable<string> mostFrequentWords)
+        public IEnumerable<string> GetSentencesWithMostFrequentWords(int numberOfSentences, IEnumerable<string> sentences, IEnumerable<string> mostFrequentWords)
         {
             var retVal = new List<string>();
 
-
+            foreach(var word in mostFrequentWords)
+            {
+                //foreach(
+            }
 
             return retVal;
         }
