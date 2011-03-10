@@ -1,6 +1,7 @@
 ﻿using System;
+using SummarizeThis.Core.Summarization.Interfaces;
 
-namespace SummarizeThis.Core.Summarization.Interfaces
+namespace SummarizeThis.Core.Summarization
 {
     public class Summarizer : ISummarizer
     {
