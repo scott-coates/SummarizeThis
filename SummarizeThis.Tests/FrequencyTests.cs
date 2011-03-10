@@ -26,7 +26,7 @@ namespace SummarizeThis.Tests
         [Test]
         public void OneFrequencyWords()
         {
-            _tokenizer.Setup(x => x.TokenizeWords(It.IsAny<string>())).Returns(new[] {"hi"});
+            _tokenizer.Setup(x => x.TokenizeWords(It.IsAny<string>())).Returns(new[] { "hi" });
 
             Dictionary<string, int> frequenices = _frequencer.GetWordFrequency(It.IsAny<string>());
 
@@ -36,7 +36,7 @@ namespace SummarizeThis.Tests
         [Test]
         public void CaseInsensitiveWords()
         {
-            var input = new[] {"HI", "hi", "HI", "Hi", "hI"};
+            var input = new[] { "HI", "hi", "HI", "Hi", "hI" };
 
             _tokenizer.Setup(x => x.TokenizeWords(It.IsAny<string>())).Returns(input);
 
@@ -48,7 +48,7 @@ namespace SummarizeThis.Tests
         [Test]
         public void Counter2Words()
         {
-            var input = new[] {"HI", "BYE"};
+            var input = new[] { "HI", "BYE" };
 
             _tokenizer.Setup(x => x.TokenizeWords(It.IsAny<string>())).Returns(input);
 
@@ -60,7 +60,7 @@ namespace SummarizeThis.Tests
         [Test]
         public void ResultsToLowerForAccurateCounting()
         {
-            var input = new[] {"HI", "BYE"};
+            var input = new[] { "HI", "BYE" };
 
             _tokenizer.Setup(x => x.TokenizeWords(It.IsAny<string>())).Returns(input);
 
@@ -73,7 +73,7 @@ namespace SummarizeThis.Tests
         [Test]
         public void TestHowManyWordsToReturn()
         {
-            var input = new Dictionary<string, int> {{"Foo", 1}, {"Bar", 1}};
+            var input = new Dictionary<string, int> { { "Foo", 1 }, { "Bar", 1 } };
 
             var frequentWords = _frequencer.GetMostFrequentWords(0, input);
 
@@ -94,12 +94,20 @@ namespace SummarizeThis.Tests
         [Test]
         public void OrderByCount()
         {
-            var input = new Dictionary<string, int> {{"Foo", 2}, {"Bar", 5}};
+            var input = new Dictionary<string, int> { { "Foo", 2 }, { "Bar", 5 } };
 
             var frequentWords = _frequencer.GetMostFrequentWords(1, input);
 
             Assert.That(frequentWords.Count() == 1);
             Assert.That(frequentWords.First() == "Bar");
+        }
+
+        [Test]
+        public void OneSentenceMostFrequent()
+        {
+            var sentencesWithMostFrequentWords = _frequencer.GetSentencesWithMostFrequentWords(new[] { "Hi" }, new string[] { });
+
+            Assert.That(sentencesWithMostFrequentWords.Count() == 0);
         }
     }
 }

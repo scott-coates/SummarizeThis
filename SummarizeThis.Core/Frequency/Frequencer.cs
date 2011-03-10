@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using SummarizeThis.Core.Frequency.Interfaces;
 using SummarizeThis.Core.Tokenization.Interfaces;
@@ -34,6 +35,15 @@ namespace SummarizeThis.Core.Frequency
             //sequence of words entered by the user and frequency.
 
             return wordFrequencies.OrderByDescending(x => x.Value).Select(x => x.Key).Take(howManyWords);
+        }
+
+        public IEnumerable<string> GetSentencesWithMostFrequentWords(IEnumerable<string> sentences, IEnumerable<string> mostFrequentWords)
+        {
+            var retVal = new List<string>();
+
+
+
+            return retVal;
         }
     }
 }
