@@ -45,9 +45,7 @@ namespace SummarizeThis.Tests
         [Test]
         public void OneValidReturnValue()
         {
-            var input = new List<string>(_stopWords);
-            
-            input.Add("Valid Value");
+            var input = new List<string>(_stopWords) { "Valid Value" };
 
             IEnumerable<string> retVal = _service.CleanStopWords(input);
 
