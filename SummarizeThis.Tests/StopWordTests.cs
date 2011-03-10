@@ -32,5 +32,14 @@ namespace SummarizeThis.Tests
 
             Assert.That(retVal.Count() == 0);
         }
+
+        [Test]
+        public void NoStopWordsReturnAll()
+        {
+            _provider.Setup(x => x.StopWords).Returns(new string[] { });
+            IEnumerable<string> retVal = _service.CleanStopWords(_stopWords);
+
+            Assert.That(retVal.Count() == _stopWords.Count());
+        }
     }
 }
