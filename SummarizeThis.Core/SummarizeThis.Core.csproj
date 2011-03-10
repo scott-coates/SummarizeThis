@@ -49,6 +49,7 @@
     <Compile Include="Frequency\Interfaces\IFrequencer.cs" />
     <Compile Include="StopWord\Interfaces\IStopWordProvider.cs" />
     <Compile Include="StopWord\Interfaces\IStopWordService.cs" />
+    <Compile Include="StopWord\Interfaces\StopWordProvider.cs" />
     <Compile Include="StopWord\StopWordService.cs" />
     <Compile Include="Summarization\Interfaces\ISummarizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

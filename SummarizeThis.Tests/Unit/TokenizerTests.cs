@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Moq;
 using NUnit.Framework;
+using SummarizeThis.Core.StopWord.Interfaces;
 using SummarizeThis.Core.Tokenization;
 using SummarizeThis.Core.Tokenization.Interfaces;
 
@@ -11,11 +13,14 @@ namespace SummarizeThis.Tests.Unit
     public class TokenizerTests
     {
         private ITokenizer _tokenizer;
+        private Mock<IStopWordService> _stopWordService;
 
         [SetUp]
         public void Setup()
         {
-            _tokenizer = new Tokenizer();
+            _stopWordService = new Mock<IStopWordService>();
+            _stopWordService.Setup(x => x.CleanStopWords(It.IsAny<IEnumerable<string>>())).Returns((IEnumerable<string> input) => input);
+            _tokenizer = new Tokenizer(_stopWordService.Object);
         }
 
         [Test]
