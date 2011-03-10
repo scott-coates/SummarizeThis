@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TokenizerTests.cs" />
     <Compile Include="StopWordTests.cs" />
     <Compile Include="SummarizeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
