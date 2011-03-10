@@ -50,5 +50,26 @@ namespace SummarizeThis.Tests
 
             Assert.That(output.Count() == 1);
         }
+
+        [Test]
+        public void TestGets2Sentences()
+        {
+            const string input = "Hello World! Bye World?";
+
+            IEnumerable<string> output = _tokenizer.TokenizeSentences(input);
+
+            Assert.That(output.Count() == 2);
+        }
+
+
+        [Test]
+        public void TestWithCRLF()
+        {
+            string input = "Hello World!" + Environment.NewLine + "Bye World?";
+
+            IEnumerable<string> output = _tokenizer.TokenizeSentences(input);
+
+            Assert.That(output.Count() == 2);
+        }
     }
 }
