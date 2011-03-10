@@ -139,6 +139,8 @@ namespace SummarizeThis.Tests
                                                                                                    }, new[] { "desk" });
 
             Assert.That(sentencesWithMostFrequentWords.Count() == 1);
+
+            Assert.That(sentencesWithMostFrequentWords.First() == "A desk is a great thing");
         }
     }
 }
