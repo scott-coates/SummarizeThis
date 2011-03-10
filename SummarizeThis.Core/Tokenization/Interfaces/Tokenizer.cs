@@ -11,7 +11,8 @@ namespace SummarizeThis.Core.Tokenization.Interfaces
 
         public IEnumerable<string> Tokenize(string input)
         {
-            //return value;
+            //using string is null or empty check.
+            //for some reason, "Hi." was returning two values. [0, "Hi"]; [1,""];??
             return Regex.Split(input, _breakOnWordsPattern).Where(x => !string.IsNullOrEmpty(x));
         }
     }

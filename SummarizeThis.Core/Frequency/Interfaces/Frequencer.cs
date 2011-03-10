@@ -27,5 +27,10 @@ namespace SummarizeThis.Core.Frequency.Interfaces
 
             return groupAsDictionary;
         }
+
+        public IEnumerable<string> GetMostFrequentWords(int howManyWords, Dictionary<string, int> wordFrequencies)
+        {
+            return null;
+        }
     }
 }
