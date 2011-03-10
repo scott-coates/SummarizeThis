@@ -53,6 +53,7 @@
     <Compile Include="Summarization\Interfaces\ISummarizer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Summarization\Summarizer.cs" />
+    <Compile Include="Summarization\TextSummary.cs" />
     <Compile Include="Tokenization\Interfaces\ITokenizer.cs" />
     <Compile Include="Tokenization\Tokenizer.cs" />
   </ItemGroup>

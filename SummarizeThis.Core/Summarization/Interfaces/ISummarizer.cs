@@ -2,6 +2,6 @@
 {
     public interface ISummarizer
     {
-        string Summarize(string input, int numberOfSentences);
+        TextSummary Summarize(string input, int numberOfSentences);
     }
 }

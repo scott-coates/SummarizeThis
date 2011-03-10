@@ -21,8 +21,8 @@ namespace SummarizeThis.Core.Frequency
 
             var group = (from t in tokens
                          group t by t.ToLower()
-                         into g
-                         select g);
+                             into g
+                             select g);
 
             var groupAsDictionary = group.ToDictionary(x => x.Key, x => x.Count());
 
@@ -38,9 +38,10 @@ namespace SummarizeThis.Core.Frequency
         }
 
         public IEnumerable<string> GetSentencesWithMostFrequentWords(int numberOfSentences,
-                                                                     IEnumerable<string> sentences,
+                                                                     string input,
                                                                      IEnumerable<string> mostFrequentWords)
         {
+            IEnumerable<string> sentences = _tokenizer.TokenizeSentences(input);
             return SearchSentencesForKeyWords(sentences, mostFrequentWords).Take(numberOfSentences);
         }
 
