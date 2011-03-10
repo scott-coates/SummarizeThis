@@ -82,7 +82,7 @@ namespace SummarizeThis.Tests
         [Test]
         public void OrderOfInputMaintainedWhenTakingSeveralBack()
         {
-            var input = new Dictionary<string, int> {{"Foo", 5}, {"Bar", 5}};
+            var input = new Dictionary<string, int> { { "Hello", 1 }, { "Foo", 5 }, { "Scott", 3 }, { "Bar", 5 }, { "World", 3 } };
 
             var frequentWords = _frequencer.GetMostFrequentWords(1, input);
 
