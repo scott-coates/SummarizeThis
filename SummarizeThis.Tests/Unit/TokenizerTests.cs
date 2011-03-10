@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using NUnit.Framework;
 using SummarizeThis.Core.Tokenization;
 using SummarizeThis.Core.Tokenization.Interfaces;
 
-namespace SummarizeThis.Tests
+namespace SummarizeThis.Tests.Unit
 {
     [TestFixture]
     public class TokenizerTests

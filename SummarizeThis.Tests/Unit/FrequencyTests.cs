@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using NUnit.Framework;
 using SummarizeThis.Core.Frequency;
 using SummarizeThis.Core.Tokenization.Interfaces;
 using SummarizeThis.Core.Frequency.Interfaces;
 using Moq;
 
-namespace SummarizeThis.Tests
+namespace SummarizeThis.Tests.Unit
 {
     [TestFixture]
     public class FrequencyTests

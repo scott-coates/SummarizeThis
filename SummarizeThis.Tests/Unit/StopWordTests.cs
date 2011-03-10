@@ -4,7 +4,7 @@ using Moq;
 using NUnit.Framework;
 using SummarizeThis.Core.StopWord.Interfaces;
 
-namespace SummarizeThis.Tests
+namespace SummarizeThis.Tests.Unit
 {
     [TestFixture]
     public class StopWordTests

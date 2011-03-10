@@ -53,10 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrequencyTests.cs" />
-    <Compile Include="TokenizerTests.cs" />
-    <Compile Include="StopWordTests.cs" />
-    <Compile Include="SummarizeTests.cs" />
+    <Compile Include="Unit\FrequencyTests.cs" />
+    <Compile Include="Unit\TokenizerTests.cs" />
+    <Compile Include="Unit\StopWordTests.cs" />
+    <Compile Include="Functional\SummarizeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
