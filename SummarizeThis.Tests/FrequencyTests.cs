@@ -25,7 +25,7 @@ namespace SummarizeThis.Tests
         [Test]
         public void OneFrequencyWords()
         {
-            _tokenizer.Setup(x => x.Tokenize(It.IsAny<string>())).Returns(new[] {"hi"});
+            _tokenizer.Setup(x => x.TokenizeWords(It.IsAny<string>())).Returns(new[] {"hi"});
 
             Dictionary<string, int> frequenices = _frequencer.GetWordFrequency(It.IsAny<string>());
 
@@ -37,7 +37,7 @@ namespace SummarizeThis.Tests
         {
             var input = new[] {"HI", "hi", "HI", "Hi", "hI"};
 
-            _tokenizer.Setup(x => x.Tokenize(It.IsAny<string>())).Returns(input);
+            _tokenizer.Setup(x => x.TokenizeWords(It.IsAny<string>())).Returns(input);
 
             Dictionary<string, int> frequenices = _frequencer.GetWordFrequency(It.IsAny<string>());
 
@@ -49,7 +49,7 @@ namespace SummarizeThis.Tests
         {
             var input = new[] {"HI", "BYE"};
 
-            _tokenizer.Setup(x => x.Tokenize(It.IsAny<string>())).Returns(input);
+            _tokenizer.Setup(x => x.TokenizeWords(It.IsAny<string>())).Returns(input);
 
             Dictionary<string, int> frequenices = _frequencer.GetWordFrequency(It.IsAny<string>());
 
@@ -61,7 +61,7 @@ namespace SummarizeThis.Tests
         {
             var input = new[] {"HI", "BYE"};
 
-            _tokenizer.Setup(x => x.Tokenize(It.IsAny<string>())).Returns(input);
+            _tokenizer.Setup(x => x.TokenizeWords(It.IsAny<string>())).Returns(input);
 
             Dictionary<string, int> frequenices = _frequencer.GetWordFrequency(It.IsAny<string>());
 

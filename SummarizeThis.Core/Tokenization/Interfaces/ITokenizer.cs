@@ -12,6 +12,7 @@ namespace SummarizeThis.Core.Tokenization.Interfaces
         /// </summary>
         /// <param name="input">The string to tokenize.</param>
         /// <returns>Returns token collection.</returns>
-        IEnumerable<string> Tokenize(string input);
+        IEnumerable<string> TokenizeWords(string input);
+        IEnumerable<string> TokenizeSentences(string input);
     }
 }

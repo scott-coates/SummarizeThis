@@ -16,7 +16,7 @@ namespace SummarizeThis.Core.Frequency.Interfaces
 
         public Dictionary<string, int> GetWordFrequency(string input)
         {
-            IEnumerable<string> tokens = _tokenizer.Tokenize(input);
+            IEnumerable<string> tokens = _tokenizer.TokenizeWords(input);
 
             var group = (from t in tokens
                          group t by t.ToLower()

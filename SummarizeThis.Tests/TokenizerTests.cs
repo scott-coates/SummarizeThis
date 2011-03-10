@@ -23,7 +23,7 @@ namespace SummarizeThis.Tests
         {
             const string input = "Hi";
 
-            IEnumerable<string> output = _tokenizer.Tokenize(input);
+            IEnumerable<string> output = _tokenizer.TokenizeWords(input);
 
             Assert.That(output.Count() == 1);
             Assert.AreEqual("Hi", output.ToList()[0]);
@@ -34,11 +34,21 @@ namespace SummarizeThis.Tests
         {
             const string input = "Hi. Bye!";
 
-            IEnumerable<string> output = _tokenizer.Tokenize(input);
+            IEnumerable<string> output = _tokenizer.TokenizeWords(input);
 
             Assert.That(output.Count() == 2);
             Assert.AreEqual("Hi", output.ToList()[0]);
             Assert.AreEqual("Bye", output.ToList()[1]);
+        }
+
+        [Test]
+        public void GetSentncesReturnsValid()
+        {
+            const string input = "Hello World!";
+
+            IEnumerable<string> output = _tokenizer.TokenizeSentences(input);
+
+            Assert.That(output.Count() == 1);
         }
     }
 }
