@@ -44,7 +44,6 @@ namespace SummarizeThis.Tests
             Assert.That(frequenices.First().Value == input.Length);
         }
 
-
         [Test]
         public void Counter2Words()
         {
