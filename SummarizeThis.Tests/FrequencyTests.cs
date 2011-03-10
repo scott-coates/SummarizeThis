@@ -31,5 +31,17 @@ namespace SummarizeThis.Tests
 
             Assert.That(frequenices.Count == 1);
         }
+
+        [Test]
+        public void CaseInsensitiveWords()
+        {
+            var input = new[] { "HI", "hi", "HI", "Hi", "hI" };
+
+            _tokenizer.Setup(x => x.Tokenize(It.IsAny<string>())).Returns(input);
+
+            Dictionary<string, int> frequenices = _frequencer.GetWordFrequency(It.IsAny<string>());
+
+            Assert.That(frequenices.First().Value == input.Length);
+        }
     }
 }
