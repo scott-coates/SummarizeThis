@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using NUnit.Framework;
 
 namespace SummarizeThis.Tests
 {
-    public class Class1
+    [TestFixture]
+    public class SummarizeTests
     {
     }
 }
