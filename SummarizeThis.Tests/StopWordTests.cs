@@ -41,5 +41,17 @@ namespace SummarizeThis.Tests
 
             Assert.That(retVal.Count() == _stopWords.Count());
         }
+
+        [Test]
+        public void OneValidReturnValue()
+        {
+            var input = new List<string>(_stopWords);
+            
+            input.Add("Valid Value");
+
+            IEnumerable<string> retVal = _service.CleanStopWords(input);
+
+            Assert.That(retVal.Count() == 1);
+        }
     }
 }
