@@ -65,5 +65,27 @@ namespace SummarizeThis.Tests
 
             Assert.That(frequentWords.Count() == 0);
         }
+
+        [Test]
+        public void OrderOfInputMaintainedWhenTakingSeveralBack()
+        {
+            var input = new Dictionary<string, int> { { "Foo", 5 }, { "Bar", 5 } };
+
+            var frequentWords = _frequencer.GetMostFrequentWords(1, input);
+
+            Assert.That(frequentWords.Count() == 1);
+            Assert.That(frequentWords.First() == "Foo");
+        }
+
+        [Test]
+        public void OrderByCount()
+        {
+            var input = new Dictionary<string, int> { { "Foo", 2 }, { "Bar", 5 } };
+
+            var frequentWords = _frequencer.GetMostFrequentWords(1, input);
+
+            Assert.That(frequentWords.Count() == 1);
+            Assert.That(frequentWords.First() == "Bar");
+        }
     }
 }
