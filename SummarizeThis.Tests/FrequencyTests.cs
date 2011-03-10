@@ -43,5 +43,18 @@ namespace SummarizeThis.Tests
 
             Assert.That(frequenices.First().Value == input.Length);
         }
+
+
+        [Test]
+        public void Counter2Words()
+        {
+            var input = new[] { "HI", "BYE" };
+
+            _tokenizer.Setup(x => x.Tokenize(It.IsAny<string>())).Returns(input);
+
+            Dictionary<string, int> frequenices = _frequencer.GetWordFrequency(It.IsAny<string>());
+
+            Assert.That(frequenices.Count == 2);
+        }
     }
 }
