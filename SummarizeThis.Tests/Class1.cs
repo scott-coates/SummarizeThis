@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SummarizeThis.Core
+namespace SummarizeThis.Tests
 {
     public class Class1
     {
