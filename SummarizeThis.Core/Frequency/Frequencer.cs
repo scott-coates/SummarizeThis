@@ -21,8 +21,8 @@ namespace SummarizeThis.Core.Frequency
 
             var group = (from t in tokens
                          group t by t.ToLower()
-                             into g
-                             select g);
+                         into g
+                         select g);
 
             var groupAsDictionary = group.ToDictionary(x => x.Key, x => x.Count());
 
@@ -37,16 +37,26 @@ namespace SummarizeThis.Core.Frequency
             return wordFrequencies.OrderByDescending(x => x.Value).Select(x => x.Key).Take(howManyWords);
         }
 
-        public IEnumerable<string> GetSentencesWithMostFrequentWords(int numberOfSentences, IEnumerable<string> sentences, IEnumerable<string> mostFrequentWords)
+        public IEnumerable<string> GetSentencesWithMostFrequentWords(int numberOfSentences,
+                                                                     IEnumerable<string> sentences,
+                                                                     IEnumerable<string> mostFrequentWords)
         {
-            var retVal = new List<string>();
+            return SearchSentencesForKeyWords(sentences, mostFrequentWords).Take(numberOfSentences);
+        }
 
-            foreach(var word in mostFrequentWords)
+        private IEnumerable<string> SearchSentencesForKeyWords(IEnumerable<string> sentences,
+                                                               IEnumerable<string> mostFrequentWords)
+        {
+            foreach (var word in mostFrequentWords)
             {
-                //foreach(
+                foreach (var sentence in sentences)
+                {
+                    if (sentence.ToLower().Contains(word.ToLower()))
+                    {
+                        yield return sentence;
+                    }
+                }
             }
-
-            return retVal;
         }
     }
 }

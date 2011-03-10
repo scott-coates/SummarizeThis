@@ -105,7 +105,8 @@ namespace SummarizeThis.Tests
         [Test]
         public void OneSentenceMostFrequentNoWords()
         {
-            var sentencesWithMostFrequentWords = _frequencer.GetSentencesWithMostFrequentWords(1, new[] { "Hi" }, new string[] { });
+            var sentencesWithMostFrequentWords = _frequencer.GetSentencesWithMostFrequentWords(1, new[] { "Hi" },
+                                                                                               new string[] { });
 
             Assert.That(sentencesWithMostFrequentWords.Count() == 0);
         }
@@ -113,7 +114,8 @@ namespace SummarizeThis.Tests
         [Test]
         public void OneSentenceOneFrequentWord()
         {
-            var sentencesWithMostFrequentWords = _frequencer.GetSentencesWithMostFrequentWords(0, new[] { "Hi" }, new[] { "Hi" });
+            var sentencesWithMostFrequentWords = _frequencer.GetSentencesWithMostFrequentWords(0, new[] { "Hi" },
+                                                                                               new[] { "Hi" });
 
             Assert.That(sentencesWithMostFrequentWords.Count() == 0);
         }
@@ -121,7 +123,20 @@ namespace SummarizeThis.Tests
         [Test]
         public void ReturnOneSentence()
         {
-            var sentencesWithMostFrequentWords = _frequencer.GetSentencesWithMostFrequentWords(1, new[] { "Hi" }, new[] { "Hi" });
+            var sentencesWithMostFrequentWords = _frequencer.GetSentencesWithMostFrequentWords(1, new[] { "Hi" },
+                                                                                               new[] { "Hi" });
+
+            Assert.That(sentencesWithMostFrequentWords.Count() == 1);
+        }
+
+        [Test]
+        public void MultipleSentences()
+        {
+            var sentencesWithMostFrequentWords = _frequencer.GetSentencesWithMostFrequentWords(1,
+                                                                                               new[]
+                                                                                                   {
+                                                                                                       "A desk is a great thing", "Why", "Because a desk rock"
+                                                                                                   }, new[] { "desk" });
 
             Assert.That(sentencesWithMostFrequentWords.Count() == 1);
         }
