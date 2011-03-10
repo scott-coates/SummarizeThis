@@ -9,6 +9,7 @@ namespace SummarizeThis.Core.StopWord.Interfaces
 
         #region Words
 
+        //http://www.ranks.nl/resources/stopwords.html
         private const string _stopWordString =
             @"a
 able
