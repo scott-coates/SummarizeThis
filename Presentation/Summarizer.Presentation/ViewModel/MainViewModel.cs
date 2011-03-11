@@ -3,9 +3,8 @@ using GalaSoft.MvvmLight.Command;
 using System.Windows;
 using Summarizer.Presentation.Messaging;
 using GalaSoft.MvvmLight.Messaging;
-using NClassifier.Summarizer;
 using Summarizer.Presentation.Model;
-
+using SummarizerService = SummarizeThis.Core.Summarization.Summarizer;
 namespace Summarizer.Presentation.ViewModel
 {
     /// <summary>
@@ -22,7 +21,7 @@ namespace Summarizer.Presentation.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
-        private SimpleSummarizer _summarizer = new SimpleSummarizer();
+        private SummarizerService _summarizer = new SummarizerService();
 
         public string ApplicationTitle
         {
@@ -69,7 +68,7 @@ namespace Summarizer.Presentation.ViewModel
 
         private void Summarize()
         {
-            string summarizedText = _summarizer.Summarize(InputText, NumberOfReturnedSentences).ToString();
+            string summarizedText = _summarizer.Summarize(InputText, NumberOfReturnedSentences).SummarizedText;
 
             var summary = new Summary(summarizedText, NumberOfReturnedSentences);
 

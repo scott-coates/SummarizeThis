@@ -48,26 +48,41 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\..\..\Visual Studio 2008\Projects\NClassifier-0.1\src\NClassifier\DefaultStopWordProvider.cs">
-      <Link>DefaultStopWordProvider.cs</Link>
+    <Compile Include="..\..\Core\SummarizeThis.Core\Frequency\Frequencer.cs">
+      <Link>Frequencer.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\..\Visual Studio 2008\Projects\NClassifier-0.1\src\NClassifier\DefaultTokenizer.cs">
-      <Link>DefaultTokenizer.cs</Link>
+    <Compile Include="..\..\Core\SummarizeThis.Core\Frequency\Interfaces\IFrequencer.cs">
+      <Link>IFrequencer.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\..\Visual Studio 2008\Projects\NClassifier-0.1\src\NClassifier\IStopWordProvider.cs">
+    <Compile Include="..\..\Core\SummarizeThis.Core\Frequency\SentenceFrequency.cs">
+      <Link>SentenceFrequency.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Core\SummarizeThis.Core\StopWord\Interfaces\IStopWordProvider.cs">
       <Link>IStopWordProvider.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\..\Visual Studio 2008\Projects\NClassifier-0.1\src\NClassifier\ITokenizer.cs">
-      <Link>ITokenizer.cs</Link>
+    <Compile Include="..\..\Core\SummarizeThis.Core\StopWord\Interfaces\IStopWordService.cs">
+      <Link>IStopWordService.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\..\Visual Studio 2008\Projects\NClassifier-0.1\src\NClassifier\Summarizer\ISummarizer.cs">
+    <Compile Include="..\..\Core\SummarizeThis.Core\StopWord\Interfaces\StopWordProvider.cs">
+      <Link>StopWordProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Core\SummarizeThis.Core\StopWord\StopWordService.cs">
+      <Link>StopWordService.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Core\SummarizeThis.Core\Summarization\Interfaces\ISummarizer.cs">
       <Link>ISummarizer.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\..\Visual Studio 2008\Projects\NClassifier-0.1\src\NClassifier\Summarizer\SimpleSummarizer.cs">
-      <Link>SimpleSummarizer.cs</Link>
+    <Compile Include="..\..\Core\SummarizeThis.Core\Summarization\Summarizer.cs">
+      <Link>Summarizer.cs</Link>
     </Compile>
-    <Compile Include="..\..\..\..\Visual Studio 2008\Projects\NClassifier-0.1\src\NClassifier\Utilities.cs">
-      <Link>Utilities.cs</Link>
+    <Compile Include="..\..\Core\SummarizeThis.Core\Summarization\TextSummary.cs">
+      <Link>TextSummary.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Core\SummarizeThis.Core\Tokenization\Interfaces\ITokenizer.cs">
+      <Link>ITokenizer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Core\SummarizeThis.Core\Tokenization\Tokenizer.cs">
+      <Link>Tokenizer.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
