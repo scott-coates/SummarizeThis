@@ -38,7 +38,7 @@ namespace SummarizeThis.Tests.Functional
         public void TwoSentenceReturnLongerInput()
         {
             const string input = "NClassifier is a dotnet assembly for working with text. NClassifier includes a summarizer. A Summarizer allows the summary of text. A Summarizer is really cool. I don't think there are any other dotnet summarizers.";
-            const string expectedResult = "NClassifier includes a summarizer. A Summarizer allows the summary of text.";
+            const string expectedResult = "NClassifier includes a summarizer. NClassifier is a dotnet assembly for working with text.";
 
             string result = _summarizer.Summarize(input, 2).SummarizedText;
 

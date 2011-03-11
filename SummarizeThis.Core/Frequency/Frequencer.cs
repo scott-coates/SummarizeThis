@@ -55,6 +55,7 @@ namespace SummarizeThis.Core.Frequency
                     if (sentence.ToLower().Contains(word.ToLower()))
                     {
                         yield return sentence;
+                        break; //this word is found. move to next most frequent word.
                     }
                 }
             }
