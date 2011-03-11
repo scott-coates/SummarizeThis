@@ -78,7 +78,7 @@ namespace SummarizeThis.Tests.Functional
         }
 
         [Test]
-        public void BigInput()
+        public void CorrectOrder()
         {
             #region input
             string input =
@@ -103,7 +103,13 @@ You can submit a ticket to the help desk 24 hours a day 7 days a week.  The help
 As always, if you have any questions please do not hesitate to ask.";
             #endregion
 
+            #region expected
+            string expected = "What is a help desk? In general, a help desk is where end-users go to for support when they can't solve an issue themselves or through the help of others. By appropriate tracking we may find that many other people experience the same type of issues and we will be able to diagnose the problem more efficiently and with greater speed.";
+            #endregion
+
             TextSummary result = _summarizer.Summarize(input, 3);
+
+            Assert.AreEqual(result.SummarizedText, expected);
         }
     }
 }
