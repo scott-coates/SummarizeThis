@@ -41,7 +41,7 @@
 		<!--ContentPanel - place additional content here-->
 		<Grid x:Name="ContentGrid"
 		      Grid.Row="1" Canvas.ZIndex="7" Margin="-8,8,8,-8" d:LayoutOverrides="GridBox">
-			<Button x:Name="btnPage2" Content="Summarize!" Margin="39,249,84,293" HorizontalAlignment="Center" Width="286">
+			<Button x:Name="btnPage2" Content="Summarize!" Margin="76,249,118,293">
 				<Custom:Interaction.Triggers>
 					<Custom:EventTrigger EventName="Click">
 						<GalaSoft_MvvmLight_Command:EventToCommand x:Name="btnPage2Clicked" Command="{Binding SummarizeCommand, Mode=OneWay}"/>

@@ -9,6 +9,9 @@ using SummarizeThis.Core.Tokenization;
 
 namespace SummarizeThis.Core.Summarization
 {
+    /*
+     * A lot of the logic came from http://nclassifier.sourceforge.net/
+     */
     public class Summarizer : ISummarizer
     {
         private readonly IFrequencer _frequencer;
