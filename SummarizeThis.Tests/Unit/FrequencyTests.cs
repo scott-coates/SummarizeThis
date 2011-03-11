@@ -155,7 +155,7 @@ namespace SummarizeThis.Tests.Unit
             _tokenizer.Setup(x => x.TokenizeSentences(It.IsAny<string>())).Returns(output);
 
             var sentencesWithMostFrequentWords = _frequencer.GetSentencesWithMostFrequentWords(2, It.IsAny<string>(),
-                                                                                               new[] { "desk" });
+                                                                                               new[] { "desk", "because" });
 
             Assert.That(sentencesWithMostFrequentWords.Count() == 2);
 
