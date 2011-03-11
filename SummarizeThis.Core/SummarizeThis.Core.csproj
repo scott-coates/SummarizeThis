@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Frequency\Frequencer.cs" />
     <Compile Include="Frequency\Interfaces\IFrequencer.cs" />
+    <Compile Include="Frequency\SentenceFrequency.cs" />
     <Compile Include="StopWord\Interfaces\IStopWordProvider.cs" />
     <Compile Include="StopWord\Interfaces\IStopWordService.cs" />
     <Compile Include="StopWord\Interfaces\StopWordProvider.cs" />

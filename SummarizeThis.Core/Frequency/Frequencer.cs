@@ -41,20 +41,26 @@ namespace SummarizeThis.Core.Frequency
                                                                      string input,
                                                                      IEnumerable<string> mostFrequentWords)
         {
-            IEnumerable<string> sentences = _tokenizer.TokenizeSentences(input);
-            return SearchSentencesForKeyWords(sentences, mostFrequentWords).Distinct().Take(numberOfSentences);
+            IEnumerable<string> convertedSentences = _tokenizer.TokenizeSentences(input);
+
+            IOrderedEnumerable<SentenceFrequency> sentenceFrequencies = SearchSentencesForKeyWords(convertedSentences.ToList(), mostFrequentWords)
+                .OrderBy(x => x.SentenceNumber);
+
+            IEnumerable<string> sentences = sentenceFrequencies.Select(x => x.Sentence);
+
+            return sentences.Distinct().Take(numberOfSentences);
         }
 
-        private IEnumerable<string> SearchSentencesForKeyWords(IEnumerable<string> sentences,
+        private IEnumerable<SentenceFrequency> SearchSentencesForKeyWords(IList<string> sentences,
                                                                IEnumerable<string> mostFrequentWords)
         {
             foreach (var word in mostFrequentWords)
             {
-                foreach (var sentence in sentences)
+                for (int i = 0; i < sentences.Count(); i++)
                 {
-                    if (sentence.ToLower().Contains(word.ToLower()))
+                    if (sentences[i].ToLower().Contains(word.ToLower()))
                     {
-                        yield return sentence;
+                        yield return new SentenceFrequency(sentences[i], i);
                         break; //this word is found. move to next most frequent word.
                     }
                 }
