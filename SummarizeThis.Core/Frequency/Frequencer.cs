@@ -21,8 +21,8 @@ namespace SummarizeThis.Core.Frequency
 
             var group = (from t in tokens
                          group t by t.ToLower()
-                         into g
-                         select g);
+                             into g
+                             select g);
 
             var groupAsDictionary = group.ToDictionary(x => x.Key, x => x.Count());
 
@@ -56,6 +56,8 @@ namespace SummarizeThis.Core.Frequency
         private IEnumerable<SentenceFrequency> SearchSentencesForKeyWords(int numberOfSentences, List<string> sentences,
                                                                           IList<string> mostFrequentWords)
         {
+            var alreadProcessed = new List<string>();
+
             //in case they request more sentences they actually put in
             int sentenceCount = numberOfSentences < sentences.Count ? numberOfSentences : sentences.Count;
 
@@ -63,9 +65,11 @@ namespace SummarizeThis.Core.Frequency
             {
                 for (int j = 0; j < sentences.Count; j++)
                 {
-                    if (sentences[j].ToLower().Contains(mostFrequentWords[i].ToLower()))
+                    if (sentences[j].ToLower().Contains(mostFrequentWords[i].ToLower()) && !alreadProcessed.Contains(sentences[j]))
                     {
-                        yield return new SentenceFrequency(sentences[j], j);
+                        var sentFreq = new SentenceFrequency(sentences[j], j);
+                        alreadProcessed.Add(sentFreq.Sentence);
+                        yield return sentFreq;
                         break; //this word is found. move to next most frequent word.
                     }
                 }
