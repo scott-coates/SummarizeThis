@@ -98,15 +98,6 @@ namespace SummarizeThis.Tests.Unit
         }
 
         [Test]
-        public void OneSentenceMostFrequentNoWords()
-        {
-            var sentencesWithMostFrequentWords = _frequencer.GetSentencesWithMostFrequentWords(1, It.IsAny<string>(),
-                                                                                               new string[] { });
-
-            Assert.That(sentencesWithMostFrequentWords.Count() == 0);
-        }
-
-        [Test]
         public void OneSentenceOneFrequentWord()
         {
             var sentencesWithMostFrequentWords = _frequencer.GetSentencesWithMostFrequentWords(0, It.IsAny<string>(),
