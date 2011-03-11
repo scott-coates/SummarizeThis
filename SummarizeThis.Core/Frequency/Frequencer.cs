@@ -21,8 +21,8 @@ namespace SummarizeThis.Core.Frequency
 
             var group = (from t in tokens
                          group t by t.ToLower()
-                             into g
-                             select g);
+                         into g
+                         select g);
 
             var groupAsDictionary = group.ToDictionary(x => x.Key, x => x.Count());
 
@@ -43,24 +43,29 @@ namespace SummarizeThis.Core.Frequency
         {
             IEnumerable<string> convertedSentences = _tokenizer.TokenizeSentences(input);
 
-            IOrderedEnumerable<SentenceFrequency> sentenceFrequencies = SearchSentencesForKeyWords(convertedSentences.ToList(), mostFrequentWords)
+            IEnumerable<SentenceFrequency> sentenceFrequencies = SearchSentencesForKeyWords(numberOfSentences,
+                                                                                            convertedSentences.ToList(),
+                                                                                            mostFrequentWords.ToList())
                 .OrderBy(x => x.SentenceNumber);
 
-            IEnumerable<string> sentences = sentenceFrequencies.Select(x => x.Sentence);
+            IEnumerable<string> sentences = sentenceFrequencies.Select(x => x.Sentence).Distinct();
 
-            return sentences.Distinct().Take(numberOfSentences);
+            return sentences;
         }
 
-        private IEnumerable<SentenceFrequency> SearchSentencesForKeyWords(IList<string> sentences,
-                                                               IEnumerable<string> mostFrequentWords)
+        private IEnumerable<SentenceFrequency> SearchSentencesForKeyWords(int numberOfSentences, List<string> sentences,
+                                                                          IList<string> mostFrequentWords)
         {
-            foreach (var word in mostFrequentWords)
+            //in case they request more sentences they actually put in
+            int sentenceCount = numberOfSentences < sentences.Count ? numberOfSentences : sentences.Count;
+
+            for (int i = 0; i < sentenceCount; i++)
             {
-                for (int i = 0; i < sentences.Count(); i++)
+                for (int j = 0; j < sentences.Count; j++)
                 {
-                    if (sentences[i].ToLower().Contains(word.ToLower()))
+                    if (sentences[j].ToLower().Contains(mostFrequentWords[i].ToLower()))
                     {
-                        yield return new SentenceFrequency(sentences[i], i);
+                        yield return new SentenceFrequency(sentences[j], j);
                         break; //this word is found. move to next most frequent word.
                     }
                 }
