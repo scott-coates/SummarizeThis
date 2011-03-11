@@ -1,7 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System.Windows;
-using Summarizer.Presentation.Messaging;
 using GalaSoft.MvvmLight.Messaging;
 using Summarizer.Presentation.Model;
 using SummarizerService = SummarizeThis.Core.Summarization.Summarizer;
@@ -71,10 +70,6 @@ namespace Summarizer.Presentation.ViewModel
             string summarizedText = _summarizer.Summarize(InputText, NumberOfReturnedSentences).SummarizedText;
 
             var summary = new Summary(summarizedText, NumberOfReturnedSentences);
-
-            var msg = new GoToPageMessage("SummaryPage");
-
-            Messenger.Default.Send(msg);
 
             Messenger.Default.Send(summary);
         }
