@@ -42,7 +42,7 @@ namespace SummarizeThis.Core.Frequency
                                                                      IEnumerable<string> mostFrequentWords)
         {
             IEnumerable<string> sentences = _tokenizer.TokenizeSentences(input);
-            return SearchSentencesForKeyWords(sentences, mostFrequentWords).Take(numberOfSentences);
+            return SearchSentencesForKeyWords(sentences, mostFrequentWords).Distinct().Take(numberOfSentences);
         }
 
         private IEnumerable<string> SearchSentencesForKeyWords(IEnumerable<string> sentences,
