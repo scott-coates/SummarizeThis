@@ -10,79 +10,10 @@ namespace SummarizeThis.Tests.Functional
     {
         private ISummarizer _summarizer;
 
-        [SetUp]
-        public void Setup()
-        {
-            _summarizer = new Summarizer();
-        }
+        #region BigInput
 
-        [Test]
-        public void OneSentenceReturnShortInput()
-        {
-            const string input = "NClassifier is a dotnet assembly for working with text.  NClassifier includes a summarizer.";
-            const string expectedResult = "NClassifier is a dotnet assembly for working with text.";
-            string result = _summarizer.Summarize(input, 1).SummarizedText;
-            Assert.AreEqual(expectedResult, result);
-        }
-
-        [Test]
-        public void MostFrequentWord()
-        {
-            const string input = "NClassifier is a dotnet assembly for working with text.  NClassifier includes a summarizer.";
-            const string expectedResult = "nclassifier";
-            string result = _summarizer.Summarize(input, 1).MostFrequentWords.First();
-            Assert.AreEqual(expectedResult, result);
-        }
-
-        [Test]
-        public void TwoSentenceReturnLongerInput()
-        {
-            const string input = "NClassifier is a dotnet assembly for working with text. NClassifier includes a summarizer. A Summarizer allows the summary of text. A Summarizer is really cool. I don't think there are any other dotnet summarizers.";
-            const string expectedResult = "NClassifier includes a summarizer. NClassifier is a dotnet assembly for working with text.";
-
-            string result = _summarizer.Summarize(input, 2).SummarizedText;
-
-            Assert.AreEqual(expectedResult, result);
-        }
-
-        [Test]
-        public void CorrectSummarized()
-        {
-            const string input = "NClassifier is a dotnet assembly for working with text. NClassifier includes a summarizer. A Summarizer allows the summary of text. A Summarizer is really cool. I don't think there are any other dotnet summarizers.";
-
-            string result = _summarizer.Summarize(input, 2).MostFrequentWords.First();
-
-            Assert.AreEqual("summarizer", result);
-        }
-
-        [Test]
-        public void OneSentenceReturnLongerInput()
-        {
-            const string input = "NClassifier is a dotnet assembly for working with text. NClassifier includes a summarizer. A Summarizer allows the summary of text. A Summarizer is really cool. I don't think there are any other dotnet summarizers.";
-            const string expectedResult = "NClassifier includes a summarizer.";
-
-            string result = _summarizer.Summarize(input, 1).SummarizedText;
-
-            Assert.AreEqual(expectedResult, result);
-        }
-
-        [Test]
-        public void DupesIgnored()
-        {
-            const string input = "NClassifier is a dotnet assembly for working with text. NClassifier is a dotnet assembly for working with text. NClassifier includes a summarizer. A Summarizer allows the summary of text. A Summarizer is really cool. I don't think there are any other dotnet summarizers. NClassifier is a dotnet assembly for working with text.";
-            const string expectedResult = "NClassifier is a dotnet assembly for working with text. NClassifier includes a summarizer.";
-
-            string result = _summarizer.Summarize(input, 2).SummarizedText;
-
-            Assert.AreEqual(expectedResult, result);
-        }
-
-        [Test]
-        public void CorrectOrder()
-        {
-            #region input
-            string input =
-                @"What is a help desk?
+        private const string _bigInput =
+            @"What is a help desk?
 
 In general, a help desk is where end-users go to for support when they can't solve an issue themselves or through the help of others. A help desk system provides IT with work flow that supports the process of providing structured service and support to the end-users.
 
@@ -101,13 +32,103 @@ The success of the Helpdesk is based on your adoption. We are asking you wheneve
 You can submit a ticket to the help desk 24 hours a day 7 days a week.  The help desk core hours will be from Monday – Friday 8am to 4:30 pm cst.  If it is an urgent issue, please see your supervisor/manager and they have means to contact the Helpdesk staff.  Non-urgent matters outside of those hours will be answered the next business day.  
 
 As always, if you have any questions please do not hesitate to ask.";
-            #endregion
 
-            #region expected
-            const string expected = "What is a help desk? In general, a help desk is where end-users go to for support when they can't solve an issue themselves or through the help of others. By appropriate tracking we may find that many other people experience the same type of issues and we will be able to diagnose the problem more efficiently and with greater speed.";
-            #endregion
+        #endregion
 
-            TextSummary result = _summarizer.Summarize(input, 3);
+        [SetUp]
+        public void Setup()
+        {
+            _summarizer = new Summarizer();
+        }
+
+        [Test]
+        public void OneSentenceReturnShortInput()
+        {
+            const string input =
+                "NClassifier is a dotnet assembly for working with text.  NClassifier includes a summarizer.";
+            const string expectedResult = "NClassifier is a dotnet assembly for working with text.";
+            string result = _summarizer.Summarize(input, 1).SummarizedText;
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        [Test]
+        public void MostFrequentWord()
+        {
+            const string input =
+                "NClassifier is a dotnet assembly for working with text.  NClassifier includes a summarizer.";
+            const string expectedResult = "nclassifier";
+            string result = _summarizer.Summarize(input, 1).MostFrequentWords.First();
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        [Test]
+        public void TwoSentenceReturnLongerInput()
+        {
+            const string input =
+                "NClassifier is a dotnet assembly for working with text. NClassifier includes a summarizer. A Summarizer allows the summary of text. A Summarizer is really cool. I don't think there are any other dotnet summarizers.";
+            const string expectedResult =
+                "NClassifier includes a summarizer. NClassifier is a dotnet assembly for working with text.";
+
+            string result = _summarizer.Summarize(input, 2).SummarizedText;
+
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        [Test]
+        public void CorrectSummarized()
+        {
+            const string input =
+                "NClassifier is a dotnet assembly for working with text. NClassifier includes a summarizer. A Summarizer allows the summary of text. A Summarizer is really cool. I don't think there are any other dotnet summarizers.";
+
+            string result = _summarizer.Summarize(input, 2).MostFrequentWords.First();
+
+            Assert.AreEqual("summarizer", result);
+        }
+
+        [Test]
+        public void OneSentenceReturnLongerInput()
+        {
+            const string input =
+                "NClassifier is a dotnet assembly for working with text. NClassifier includes a summarizer. A Summarizer allows the summary of text. A Summarizer is really cool. I don't think there are any other dotnet summarizers.";
+            const string expectedResult = "NClassifier includes a summarizer.";
+
+            string result = _summarizer.Summarize(input, 1).SummarizedText;
+
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        [Test]
+        public void DupesIgnored()
+        {
+            const string input =
+                "NClassifier is a dotnet assembly for working with text. NClassifier is a dotnet assembly for working with text. NClassifier includes a summarizer. A Summarizer allows the summary of text. A Summarizer is really cool. I don't think there are any other dotnet summarizers. NClassifier is a dotnet assembly for working with text.";
+            const string expectedResult =
+                "NClassifier is a dotnet assembly for working with text. NClassifier includes a summarizer.";
+
+            string result = _summarizer.Summarize(input, 2).SummarizedText;
+
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        [Test]
+        public void CorrectOrder()
+        {
+            const string expected =
+                "What is a help desk? In general, a help desk is where end-users go to for support when they can't solve an issue themselves or through the help of others. By appropriate tracking we may find that many other people experience the same type of issues and we will be able to diagnose the problem more efficiently and with greater speed.";
+
+
+            TextSummary result = _summarizer.Summarize(_bigInput, 3);
+
+            Assert.AreEqual(result.SummarizedText, expected);
+        }
+
+        [Test]
+        public void CaseNotImportant()
+        {
+            const string input = "What is a help desk? what is a help desk? In general, a help desk is where end-users go to for support when they can't solve an issue themselves or through the help of others. By appropriate tracking we may find that many other people experience the same type of issues and we will be able to diagnose the problem more efficiently and with greater speed.";
+            const string expected = "What is a help desk? In general, a help desk is where end-users go to for support when they can't solve an issue themselves or through the help of others.";
+
+            TextSummary result = _summarizer.Summarize(input, 2);
 
             Assert.AreEqual(result.SummarizedText, expected);
         }

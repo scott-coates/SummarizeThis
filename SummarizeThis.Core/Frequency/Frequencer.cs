@@ -58,17 +58,15 @@ namespace SummarizeThis.Core.Frequency
         {
             var alreadProcessed = new List<string>();
 
-            //in case they request more sentences they actually put in
-            int sentenceCount = numberOfSentences < sentences.Count ? numberOfSentences : sentences.Count;
-
-            for (int i = 0; i < sentenceCount; i++)
+            for (int i = 0; i < numberOfSentences; i++)
             {
                 for (int j = 0; j < sentences.Count; j++)
                 {
-                    if (sentences[j].ToLower().Contains(mostFrequentWords[i].ToLower()) && !alreadProcessed.Contains(sentences[j]))
+                    string sentenceToLower = sentences[j].ToLower();
+                    if (sentenceToLower.Contains(mostFrequentWords[i].ToLower()) && !alreadProcessed.Contains(sentenceToLower))
                     {
                         var sentFreq = new SentenceFrequency(sentences[j], j);
-                        alreadProcessed.Add(sentFreq.Sentence);
+                        alreadProcessed.Add(sentenceToLower);
                         yield return sentFreq;
                         break; //this word is found. move to next most frequent word.
                     }
