@@ -10,7 +10,8 @@ namespace SummarizeThis.Core.Tokenization
     {
         private readonly IStopWordService _stopWordService;
         private const string _breakOnWordsPattern = "\\W+";
-        private const string _breakOnSentencesPattern = @"(?:\.|!|\?)+(?:\s+|\z)";
+        //http://stackoverflow.com/questions/1936388/what-is-a-regular-expression-for-parsing-out-individual-sentences
+        private const string _breakOnSentencesPattern = @"(\S.+?[.!?])(?=\s+|$)";
 
         public Tokenizer(IStopWordService stopWordService)
         {
@@ -30,7 +31,7 @@ namespace SummarizeThis.Core.Tokenization
         {
             // split on a ".", a "!", a "?" followed by a space or EOL.
             //Using the hack (above) to remove empty.
-            return Regex.Split(input, _breakOnSentencesPattern).Where(x => !string.IsNullOrEmpty(x));
+            return Regex.Split(input, _breakOnSentencesPattern, RegexOptions.IgnorePatternWhitespace).Where(x => !string.IsNullOrEmpty(x));
         }
     }
 }
