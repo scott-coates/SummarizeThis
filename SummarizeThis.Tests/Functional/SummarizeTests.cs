@@ -76,5 +76,34 @@ namespace SummarizeThis.Tests.Functional
 
             Assert.AreEqual(expectedResult, result);
         }
+
+        [Test]
+        public void BigInput()
+        {
+            #region input
+            string input =
+                @"What is a help desk?
+
+In general, a help desk is where end-users go to for support when they can't solve an issue themselves or through the help of others. A help desk system provides IT with work flow that supports the process of providing structured service and support to the end-users.
+
+Why is this important?
+
+The IT department sees two very important issues being resolved by using a formal Helpdesk process.  The first is issue tracking. By appropriate tracking we may find that many other people experience the same type of issues and we will be able to diagnose the problem more efficiently and with greater speed.  
+
+The second issue is user confidence.  From a management point of view we need to provide confidence for our user base so that when you submit a particular inquiry you will know how long it will take to hear back from IT.  The best way to do this is through Service Level Agreements or (SLA's).  This will better help us prioritize our work to control response times, increase efficiency and enforce standards across our entire operation.
+
+Attached to this communication is a printable reference sheet that will help you choose your priority when you submit your ticket to the help desk.  
+
+What can you do to help?
+
+The success of the Helpdesk is based on your adoption. We are asking you whenever possible to please submit your issue through the online portal rather than make a phone call.  In the case of a system outage or inability to login you will need to call and a ticket will be created for you. You can call the help desk at 920-471-4655 or ext. 7122. Keep in mind if you have a working system and call the help desk they will ask you to submit a ticket through the portal.  To send a ticket visit: helpdesk.nationalaudit.com
+
+You can submit a ticket to the help desk 24 hours a day 7 days a week.  The help desk core hours will be from Monday – Friday 8am to 4:30 pm cst.  If it is an urgent issue, please see your supervisor/manager and they have means to contact the Helpdesk staff.  Non-urgent matters outside of those hours will be answered the next business day.  
+
+As always, if you have any questions please do not hesitate to ask.";
+            #endregion
+
+            TextSummary result = _summarizer.Summarize(input, 3);
+        }
     }
 }
