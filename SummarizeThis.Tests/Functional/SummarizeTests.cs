@@ -67,7 +67,7 @@ As always, if you have any questions please do not hesitate to ask.";
             const string input =
                 "NClassifier is a dotnet assembly for working with text. NClassifier includes a summarizer. A Summarizer allows the summary of text. A Summarizer is really cool. I don't think there are any other dotnet summarizers.";
             const string expectedResult =
-                "NClassifier includes a summarizer. NClassifier is a dotnet assembly for working with text.";
+                "NClassifier is a dotnet assembly for working with text. NClassifier includes a summarizer.";
 
             string result = _summarizer.Summarize(input, 2).SummarizedText;
 
@@ -103,7 +103,8 @@ As always, if you have any questions please do not hesitate to ask.";
             const string input =
                 "NClassifier is a dotnet assembly for working with text. NClassifier is a dotnet assembly for working with text. NClassifier includes a summarizer. A Summarizer allows the summary of text. A Summarizer is really cool. I don't think there are any other dotnet summarizers. NClassifier is a dotnet assembly for working with text.";
             const string expectedResult =
-                "NClassifier is a dotnet assembly for working with text. NClassifier includes a summarizer.";
+                "NClassifier is a dotnet assembly for working with text. I don't think there are any other dotnet summarizers.";
+
 
             string result = _summarizer.Summarize(input, 2).SummarizedText;
 

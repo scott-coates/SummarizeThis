@@ -48,7 +48,7 @@ namespace SummarizeThis.Core.Frequency
                                                                                             mostFrequentWords.ToList())
                 .OrderBy(x => x.SentenceNumber);
 
-            IEnumerable<string> sentences = sentenceFrequencies.Select(x => x.Sentence).Distinct();
+            IEnumerable<string> sentences = sentenceFrequencies.Select(x => x.Sentence);
 
             return sentences;
         }
