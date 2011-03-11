@@ -46,6 +46,16 @@ namespace SummarizeThis.Tests.Functional
         }
 
         [Test]
+        public void CorrectSummarized()
+        {
+            const string input = "NClassifier is a dotnet assembly for working with text. NClassifier includes a summarizer. A Summarizer allows the summary of text. A Summarizer is really cool. I don't think there are any other dotnet summarizers.";
+
+            string result = _summarizer.Summarize(input, 2).MostFrequentWords.First();
+
+            Assert.AreEqual("summarizer", result);
+        }
+
+        [Test]
         public void OneSentenceReturnLongerInput()
         {
             const string input = "NClassifier is a dotnet assembly for working with text. NClassifier includes a summarizer. A Summarizer allows the summary of text. A Summarizer is really cool. I don't think there are any other dotnet summarizers.";
