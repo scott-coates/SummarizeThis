@@ -41,16 +41,26 @@ namespace SummarizeThis.Core.Frequency
                                                                      string input,
                                                                      IEnumerable<string> mostFrequentWords)
         {
+            IEnumerable<string> retVal = null;
             IEnumerable<string> convertedSentences = _tokenizer.TokenizeSentences(input);
 
-            IEnumerable<SentenceFrequency> sentenceFrequencies = SearchSentencesForKeyWords(numberOfSentences,
-                                                                                            convertedSentences.ToList(),
-                                                                                            mostFrequentWords.ToList())
-                .OrderBy(x => x.SentenceNumber);
+            if (numberOfSentences >= convertedSentences.Count())
+            {
+                retVal = convertedSentences;
+            }
+            else
+            {
+                IEnumerable<SentenceFrequency> sentenceFrequencies = SearchSentencesForKeyWords(numberOfSentences,
+                                                                                                convertedSentences.
+                                                                                                    ToList(),
+                                                                                                mostFrequentWords.ToList
+                                                                                                    ())
+                    .OrderBy(x => x.SentenceNumber);
 
-            IEnumerable<string> sentences = sentenceFrequencies.Select(x => x.Sentence);
+                retVal = sentenceFrequencies.Select(x => x.Sentence);
+            }
 
-            return sentences;
+            return retVal;
         }
 
         private IEnumerable<SentenceFrequency> SearchSentencesForKeyWords(int numberOfSentences, List<string> sentences,
@@ -63,7 +73,8 @@ namespace SummarizeThis.Core.Frequency
                 for (int j = 0; j < sentences.Count; j++)
                 {
                     string sentenceToLower = sentences[j].ToLower();
-                    if (sentenceToLower.Contains(mostFrequentWords[i].ToLower()) && !alreadProcessed.Contains(sentenceToLower))
+                    if (sentenceToLower.Contains(mostFrequentWords[i].ToLower()) &&
+                        !alreadProcessed.Contains(sentenceToLower))
                     {
                         var sentFreq = new SentenceFrequency(sentences[j], j);
                         alreadProcessed.Add(sentenceToLower);

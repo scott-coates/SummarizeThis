@@ -133,5 +133,15 @@ As always, if you have any questions please do not hesitate to ask.";
 
             Assert.AreEqual(result.SummarizedText, expected);
         }
+
+        [Test]
+        public void RequestedOutputMoreThanInput()
+        {
+            const string input = "Test. Hi. Test World. Hello.";
+
+            TextSummary result = _summarizer.Summarize(input, 5);
+
+            Assert.AreEqual(input, result.SummarizedText);
+        }
     }
 }
