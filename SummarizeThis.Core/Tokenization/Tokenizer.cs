@@ -30,8 +30,7 @@ namespace SummarizeThis.Core.Tokenization
         public IEnumerable<string> TokenizeSentences(string input)
         {
             // split on a ".", a "!", a "?" followed by a space or EOL.
-            //Using the hack (above) to remove empty.
-            return Regex.Split(input, _breakOnSentencesPattern, RegexOptions.IgnorePatternWhitespace).Where(x => !string.IsNullOrEmpty(x));
+            return Regex.Matches(input, _breakOnSentencesPattern).OfType<Match>().Select(x => x.Value);
         }
     }
 }
