@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using SummarizeThis.Core.Frequency.Interfaces;
+using SummarizeThis.Core.Stem.Interfaces;
 using SummarizeThis.Core.Tokenization.Interfaces;
 using Lucene.Net.Analysis;
 
@@ -10,12 +11,10 @@ namespace SummarizeThis.Core.Frequency
     public class Frequencer : IFrequencer
     {
         private readonly ITokenizer _tokenizer;
-        private readonly IPorterStemmer _stemmer;
 
-        public Frequencer(ITokenizer tokenizer, IPorterStemmer stemmer)
+        public Frequencer(ITokenizer tokenizer)
         {
             _tokenizer = tokenizer;
-            _stemmer = stemmer;
         }
 
         public Dictionary<string, int> GetWordFrequency(string input)
@@ -23,7 +22,7 @@ namespace SummarizeThis.Core.Frequency
             IEnumerable<string> tokens = _tokenizer.TokenizeWords(input);
 
             var group = (from t in tokens
-                         group t by _stemmer.Stem(t.ToLower())
+                         group t by t.ToLower()
                              into g
                              select g);
 

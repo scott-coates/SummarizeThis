@@ -3,6 +3,7 @@ using System.Linq;
 using Lucene.Net.Analysis;
 using NUnit.Framework;
 using SummarizeThis.Core.Frequency;
+using SummarizeThis.Core.Stem.Interfaces;
 using SummarizeThis.Core.Tokenization.Interfaces;
 using SummarizeThis.Core.Frequency.Interfaces;
 using Moq;
@@ -14,19 +15,16 @@ namespace SummarizeThis.Tests.Unit
     {
         private Mock<ITokenizer> _tokenizer;
         private IFrequencer _frequencer;
-        private Mock<IPorterStemmer> _stemmer;
 
         [SetUp]
         public void Setup()
         {
             _tokenizer = new Mock<ITokenizer>();
-            _stemmer = new Mock<IPorterStemmer>();
-            _frequencer = new Frequencer(_tokenizer.Object, _stemmer.Object);
+            _frequencer = new Frequencer(_tokenizer.Object);
 
             var input = new[] { "HI", "BYE" };
             _tokenizer.Setup(x => x.TokenizeWords(It.IsAny<string>())).Returns(input);
             _tokenizer.Setup(x => x.TokenizeSentences(It.IsAny<string>())).Returns(new[] { "Hi" });
-            _stemmer.Setup(x => x.Stem(It.IsAny<string>())).Returns((string x) => x);
         }
 
         [Test]

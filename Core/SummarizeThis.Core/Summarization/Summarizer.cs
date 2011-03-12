@@ -23,7 +23,7 @@ namespace SummarizeThis.Core.Summarization
         }
 
         public Summarizer()
-            : this(new Frequencer(new Tokenizer(new StopWordService(new StopWordProvider())), new PorterStemmer()))
+            : this(new Frequencer(new Tokenizer(new StopWordService(new StopWordProvider()), new PorterStemmer())))
         {
         }
 

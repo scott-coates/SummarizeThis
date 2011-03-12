@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Moq;
 using NUnit.Framework;
+using SummarizeThis.Core.Stem.Interfaces;
 using SummarizeThis.Core.StopWord.Interfaces;
 using SummarizeThis.Core.Tokenization;
 using SummarizeThis.Core.Tokenization.Interfaces;
@@ -14,13 +15,16 @@ namespace SummarizeThis.Tests.Unit
     {
         private ITokenizer _tokenizer;
         private Mock<IStopWordService> _stopWordService;
+        private Mock<IStemmer> _stemmer;
 
         [SetUp]
         public void Setup()
         {
             _stopWordService = new Mock<IStopWordService>();
             _stopWordService.Setup(x => x.CleanStopWords(It.IsAny<IEnumerable<string>>())).Returns((IEnumerable<string> input) => input); //just return
-            _tokenizer = new Tokenizer(_stopWordService.Object);
+            _stemmer = new Mock<IStemmer>();
+            _stemmer.Setup(x => x.Stem(It.IsAny<string>())).Returns((string x) => x);
+            _tokenizer = new Tokenizer(_stopWordService.Object, _stemmer.Object);
         }
 
         [Test]

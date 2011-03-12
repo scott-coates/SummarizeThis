@@ -41,6 +41,7 @@ optimize for fewer object creations.  ]
 */
 using System;
 using System.IO;
+using SummarizeThis.Core.Stem.Interfaces;
 
 namespace Lucene.Net.Analysis
 {
@@ -51,7 +52,7 @@ namespace Lucene.Net.Analysis
     /// word can be provided a character at time (by calling add()), or at once
     /// by calling one of the various stem(something) methods.
     /// </summary>
-    public class PorterStemmer : IPorterStemmer
+    public class PorterStemmer : IStemmer
     {
         private const int INC = 50; /* unit of size whereby b is increased */
         private const int EXTRA = 1;
