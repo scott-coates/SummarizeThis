@@ -56,7 +56,7 @@ As always, if you have any questions please do not hesitate to ask.";
         {
             const string input =
                 "NClassifier is a dotnet assembly for working with text.  NClassifier includes a summarizer.";
-            const string expectedResult = "nclassifier";
+            const string expectedResult = "nclassifi";
             string result = _summarizer.Summarize(input, 1).MostFrequentWords.First();
             Assert.AreEqual(expectedResult, result);
         }
@@ -82,7 +82,7 @@ As always, if you have any questions please do not hesitate to ask.";
 
             string result = _summarizer.Summarize(input, 2).MostFrequentWords.First();
 
-            Assert.AreEqual("summarizer", result);
+            Assert.AreEqual("summar", result);
         }
 
         [Test]
