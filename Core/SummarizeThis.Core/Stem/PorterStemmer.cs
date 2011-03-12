@@ -51,7 +51,7 @@ namespace Lucene.Net.Analysis
     /// word can be provided a character at time (by calling add()), or at once
     /// by calling one of the various stem(something) methods.
     /// </summary>
-    internal class PorterStemmer : IPorterStemmer
+    public class PorterStemmer : IPorterStemmer
     {
         private const int INC = 50; /* unit of size whereby b is increased */
         private const int EXTRA = 1;

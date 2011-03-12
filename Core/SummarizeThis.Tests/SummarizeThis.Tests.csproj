@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Unit\FrequencyTests.cs" />
+    <Compile Include="Unit\PorterStemmerTests.cs" />
     <Compile Include="Unit\TokenizerTests.cs" />
     <Compile Include="Unit\StopWordTests.cs" />
     <Compile Include="Functional\SummarizeTests.cs" />
