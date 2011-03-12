@@ -1,0 +1,3 @@
+http://w-shadow.com/blog/2008/04/12/simple-text-summarizer-in-php/
+http://incubator.apache.org/lucene.net/
+http://incubator.apache.org/lucene.net/
