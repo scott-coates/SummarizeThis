@@ -18,5 +18,15 @@ namespace SummarizeThis.Tests.Unit
 
             Assert.AreEqual(at, stemmer.Stem(at));
         }
+
+        [Test]
+        public void CanStem()
+        {
+            var shopping = "shopping";
+            var shop = "shop";
+            var stemmer = new PorterStemmer();
+
+            Assert.AreEqual(shop, stemmer.Stem(shopping));
+        }
     }
 }
