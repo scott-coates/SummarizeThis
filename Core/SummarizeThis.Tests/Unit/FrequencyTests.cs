@@ -122,8 +122,8 @@ namespace SummarizeThis.Tests.Unit
             var output = new[]
                              {
                                  "A desk is a great thing"
-                                 , "Why",
-                                 "Because a desk rock"
+                                 , "Why"
+                                 ,"Because a desk rock"
                              };
             _tokenizer.Setup(x => x.TokenizeSentences(It.IsAny<string>())).Returns(output);
 
