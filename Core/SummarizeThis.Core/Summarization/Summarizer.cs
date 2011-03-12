@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Lucene.Net.Analysis;
 using SummarizeThis.Core.Frequency;
 using SummarizeThis.Core.Frequency.Interfaces;
 using SummarizeThis.Core.StopWord.Interfaces;
@@ -22,7 +23,7 @@ namespace SummarizeThis.Core.Summarization
         }
 
         public Summarizer()
-            : this(new Frequencer(new Tokenizer(new StopWordService(new StopWordProvider()))))
+            : this(new Frequencer(new Tokenizer(new StopWordService(new StopWordProvider())), new PorterStemmer()))
         {
         }
 
