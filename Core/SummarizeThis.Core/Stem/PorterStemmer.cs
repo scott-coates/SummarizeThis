@@ -43,7 +43,7 @@ using System;
 using System.IO;
 using SummarizeThis.Core.Stem.Interfaces;
 
-namespace Lucene.Net.Analysis
+namespace SummarizeThis.Core.Stem
 {
     /// <summary> 
     /// Stemmer, implementing the Porter Stemming Algorithm

@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using SummarizeThis.Core.StopWord.Interfaces;
 
-namespace SummarizeThis.Core.StopWord.Interfaces
+namespace SummarizeThis.Core.StopWord
 {
     public class StopWordProvider : IStopWordProvider
     {
@@ -656,6 +657,7 @@ whos
 whose
 why
 widely
+will
 willing
 wish
 with

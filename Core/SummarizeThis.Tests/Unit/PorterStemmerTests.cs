@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Lucene.Net.Analysis;
 using NUnit.Framework;
+using SummarizeThis.Core.Stem;
 
 namespace SummarizeThis.Tests.Unit
 {

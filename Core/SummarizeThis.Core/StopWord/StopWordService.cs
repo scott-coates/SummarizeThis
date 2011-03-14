@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using SummarizeThis.Core.StopWord.Interfaces;
 
-namespace SummarizeThis.Core.StopWord.Interfaces
+namespace SummarizeThis.Core.StopWord
 {
     public class StopWordService : IStopWordService
     {
-        private IStopWordProvider _provider;
+        private readonly IStopWordProvider _provider;
 
         public StopWordService(IStopWordProvider provider)
         {

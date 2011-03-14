@@ -2,6 +2,7 @@
 using System.Linq;
 using Moq;
 using NUnit.Framework;
+using SummarizeThis.Core.StopWord;
 using SummarizeThis.Core.StopWord.Interfaces;
 
 namespace SummarizeThis.Tests.Unit

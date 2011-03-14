@@ -8,18 +8,35 @@ namespace SummarizeThis.Core.Summarization
 {
     public class TextSummary
     {
-        public string SummarizedText { get; private set; }
+        private string _summarizedText;
+
+        public IEnumerable<SentenceFrequency> SentenceScores { get; private set; }
         public Dictionary<string, int> AllWordFrequency { get; private set; }
         public Dictionary<string, int> HighestRankingWordFrequency { get; private set; }
         public int ReturnedSentences { get; private set; }
-        public IEnumerable<SentenceFrequency> SentenceScores { get; private set; }
 
-        public TextSummary(string summarizedText, IEnumerable<SentenceFrequency> sentenceScores,
+        public IEnumerable<SentenceFrequency> HighestRankedSentences
+        {
+            get { return SentenceScores.Take(ReturnedSentences); }
+        }
+
+        public string SummarizedText
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_summarizedText))
+                {
+                    _summarizedText = string.Join(" ", HighestRankedSentences.Select(x => x.Sentence).ToArray());
+                }
+                return _summarizedText;
+            }
+        }
+
+        public TextSummary(IEnumerable<SentenceFrequency> sentenceScores,
                            Dictionary<string, int> allWordFrequency,
                            Dictionary<string, int> highestRankingWordFrequency,
                            int returnedSentences)
         {
-            SummarizedText = summarizedText;
             SentenceScores = sentenceScores;
             AllWordFrequency = allWordFrequency;
             HighestRankingWordFrequency = highestRankingWordFrequency;

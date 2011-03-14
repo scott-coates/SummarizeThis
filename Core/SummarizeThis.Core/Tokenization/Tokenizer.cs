@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Lucene.Net.Analysis;
 using SummarizeThis.Core.Stem.Interfaces;
 using SummarizeThis.Core.StopWord.Interfaces;
 using SummarizeThis.Core.Tokenization.Interfaces;
