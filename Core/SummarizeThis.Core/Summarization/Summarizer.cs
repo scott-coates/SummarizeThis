@@ -31,11 +31,11 @@ namespace SummarizeThis.Core.Summarization
         {
             Dictionary<string, int> wordFrequency = _frequencer.GetWordFrequency(input);
             Dictionary<string, int> mostFrequentWords = _frequencer.GetMostFrequentWords(100, wordFrequency);
-            IEnumerable<string> sentencesWithMostFrequentWords = _frequencer.GetSentencesWithMostFrequentWords(numberOfSentences, input, mostFrequentWords);
+            IEnumerable<SentenceFrequency> sentencesWithMostFrequentWords = _frequencer.GetSentencesWithMostFrequentWords(numberOfSentences, input, mostFrequentWords);
 
-            string summarizedText = string.Join(" ", sentencesWithMostFrequentWords.ToArray());
+            string summarizedText = string.Join(" ", sentencesWithMostFrequentWords.Select(x => x.Sentence).ToArray());
 
-            return new TextSummary(summarizedText, wordFrequency, mostFrequentWords, numberOfSentences);
+            return new TextSummary(summarizedText, sentencesWithMostFrequentWords, wordFrequency, mostFrequentWords, numberOfSentences);
         }
     }
 }

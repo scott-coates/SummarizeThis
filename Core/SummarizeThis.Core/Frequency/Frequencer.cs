@@ -37,24 +37,24 @@ namespace SummarizeThis.Core.Frequency
                                                                                                    x => x.Value);
         }
 
-        public IEnumerable<string> GetSentencesWithMostFrequentWords(int numberOfSentences,
-                                                                     string input,
-                                                                     Dictionary<string, int> mostFrequentWords)
+        public IEnumerable<SentenceFrequency> GetSentencesWithMostFrequentWords(int numberOfSentences,
+                                                                                string input,
+                                                                                Dictionary<string, int>
+                                                                                    mostFrequentWords)
         {
-            IEnumerable<string> retVal = null;
+            IEnumerable<SentenceFrequency> retVal = null;
             IEnumerable<string> convertedSentences = _tokenizer.TokenizeSentences(input);
 
             if (numberOfSentences >= convertedSentences.Count())
             {
-                retVal = convertedSentences;
+                retVal = convertedSentences.Select(x => new SentenceFrequency(x, 0));
             }
             else
             {
-                IEnumerable<SentenceFrequency> sentenceFrequencies = SearchSentencesForKeyWords(numberOfSentences,
-                                                                                                convertedSentences.
-                                                                                                    ToList(),
-                                                                                                mostFrequentWords);
-                retVal = sentenceFrequencies.Select(x => x.Sentence);
+                retVal = SearchSentencesForKeyWords(numberOfSentences,
+                                                    convertedSentences.
+                                                        ToList(),
+                                                    mostFrequentWords);
             }
 
             return retVal;

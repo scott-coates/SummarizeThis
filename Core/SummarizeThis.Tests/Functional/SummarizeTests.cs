@@ -57,7 +57,7 @@ As always, if you have any questions please do not hesitate to ask.";
             const string input =
                 "NClassifier is a dotnet assembly for working with text.  NClassifier includes a summarizer.";
             const string expectedResult = "nclassifi";
-            string result = _summarizer.Summarize(input, 1).MostFrequentWords.First().Key;
+            string result = _summarizer.Summarize(input, 1).HighestRankingWordFrequency.First().Key;
             Assert.AreEqual(expectedResult, result);
         }
 
@@ -80,7 +80,7 @@ As always, if you have any questions please do not hesitate to ask.";
             const string input =
                 "NClassifier is a dotnet assembly for working with text. NClassifier includes a summarizer. A Summarizer allows the summary of text. A Summarizer is really cool. I don't think there are any other dotnet summarizers.";
 
-            string result = _summarizer.Summarize(input, 2).MostFrequentWords.First().Key;
+            string result = _summarizer.Summarize(input, 2).HighestRankingWordFrequency.First().Key;
 
             Assert.AreEqual("summar", result);
         }
@@ -127,7 +127,7 @@ As always, if you have any questions please do not hesitate to ask.";
         public void CaseNotImportant()
         {
             const string input = "What is a help desk? WHAT IS A HELP DESK? In general, a help desk is where end-users go to for support when they can't solve an issue themselves or through the help of others. By appropriate tracking we may find that many other people experience the same type of issues and we will be able to diagnose the problem more efficiently and with greater speed.";
-            const string expected = "What is a help desk? In general, a help desk is where end-users go to for support when they can't solve an issue themselves or through the help of others.";
+            const string expected = "By appropriate tracking we may find that many other people experience the same type of issues and we will be able to diagnose the problem more efficiently and with greater speed. In general, a help desk is where end-users go to for support when they can't solve an issue themselves or through the help of others.";
 
             TextSummary result = _summarizer.Summarize(input, 2);
 

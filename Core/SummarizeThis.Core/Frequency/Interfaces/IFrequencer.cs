@@ -6,6 +6,6 @@ namespace SummarizeThis.Core.Frequency.Interfaces
     {
         Dictionary<string, int> GetWordFrequency(string input);
         Dictionary<string, int> GetMostFrequentWords(int howManyWords, Dictionary<string, int> wordFrequencies);
-        IEnumerable<string> GetSentencesWithMostFrequentWords(int numberOfSentences, string input, Dictionary<string, int> mostFrequentWords);
+        IEnumerable<SentenceFrequency> GetSentencesWithMostFrequentWords(int numberOfSentences, string input, Dictionary<string, int> mostFrequentWords);
     }
 }

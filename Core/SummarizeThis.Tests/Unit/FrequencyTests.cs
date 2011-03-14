@@ -136,7 +136,7 @@ namespace SummarizeThis.Tests.Unit
 
             Assert.That(sentencesWithMostFrequentWords.Count() == 1);
 
-            Assert.That(sentencesWithMostFrequentWords.First() == "A desk is a great thing");
+            Assert.That(sentencesWithMostFrequentWords.First().Sentence == "A desk is a great thing");
         }
 
         [Test]
@@ -160,8 +160,8 @@ namespace SummarizeThis.Tests.Unit
 
             Assert.That(sentencesWithMostFrequentWords.Count() == 2);
 
-            Assert.That(sentencesWithMostFrequentWords.First() == "A desk is a great thing");
-            Assert.That(sentencesWithMostFrequentWords.Last() == "Because it's rockin");
+            Assert.That(sentencesWithMostFrequentWords.First().Sentence == "A desk is a great thing");
+            Assert.That(sentencesWithMostFrequentWords.Last().Sentence == "Because it's rockin");
         }
     }
 }
