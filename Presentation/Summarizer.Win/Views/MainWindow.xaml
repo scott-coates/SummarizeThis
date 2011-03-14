@@ -27,7 +27,7 @@
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    TextWrapping="Wrap" />
-        <Slider Height="35" HorizontalAlignment="Left" Margin="32,212,0,0" Name="slider1" VerticalAlignment="Top" Width="570" SnapsToDevicePixels="True" Value="{Binding Path=NumberOfReturnedSentences}" />
+        <Slider Height="35" HorizontalAlignment="Left" Margin="32,212,0,0" Name="slider1" VerticalAlignment="Top" Width="477" SnapsToDevicePixels="True" Value="{Binding Path=NumberOfReturnedSentences}" Minimum="1" Maximum="100" SmallChange="1" LargeChange="10" />
         <Button Content="Button" Height="36" HorizontalAlignment="Left" Margin="482,268,0,0" Name="button1" VerticalAlignment="Top" Width="120" >
             <Custom:Interaction.Triggers>
                 <Custom:EventTrigger EventName="Click">
@@ -36,5 +36,6 @@
             </Custom:Interaction.Triggers>
         </Button>
         <TextBox Height="141" HorizontalAlignment="Left" Margin="32,55,0,0" Name="textBox1" VerticalAlignment="Top" Width="570" Text="{Binding Path=InputText}" />
+        <Label Height="35" HorizontalAlignment="Left" Margin="522,212,0,0" Name="label1" VerticalAlignment="Top" Width="80" Content="{Binding Path=Value, ElementName=slider1}" />
     </Grid>
 </Window>
