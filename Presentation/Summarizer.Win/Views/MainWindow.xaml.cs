@@ -3,7 +3,6 @@ using Summarizer.Win.ViewModel;
 using System;
 using System.Windows.Navigation;
 using GalaSoft.MvvmLight.Messaging;
-using Summarizer.Win.Model;
 
 namespace Summarizer.Win
 {

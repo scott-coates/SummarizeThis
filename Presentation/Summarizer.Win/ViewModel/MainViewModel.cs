@@ -2,7 +2,7 @@
 using GalaSoft.MvvmLight.Command;
 using SummarizerService = SummarizeThis.Core.Summarization.Summarizer;
 using GalaSoft.MvvmLight.Messaging;
-using Summarizer.Win.Model;
+using SummarizeThis.Core.Summarization;
 
 namespace Summarizer.Win.ViewModel
 {
@@ -21,7 +21,7 @@ namespace Summarizer.Win.ViewModel
     public class MainViewModel : ViewModelBase
     {
         private SummarizerService _summarizer = new SummarizerService();
-        
+
         public string ApplicationTitle
         {
             get
@@ -41,6 +41,8 @@ namespace Summarizer.Win.ViewModel
         public string InputText { get; set; }
 
         public int NumberOfReturnedSentences { get; set; }
+
+        public string SummarizedText { get; set; }
 
         public RelayCommand SummarizeCommand
         {
@@ -67,11 +69,10 @@ namespace Summarizer.Win.ViewModel
 
         private void Summarize()
         {
-            string summarizedText = _summarizer.Summarize(InputText, NumberOfReturnedSentences).SummarizedText;
+            TextSummary textSummary = _summarizer.Summarize(InputText, NumberOfReturnedSentences);
 
-            var summary = new Summary(summarizedText, NumberOfReturnedSentences);
-
-            Messenger.Default.Send(summary);
+            SummarizedText = textSummary.SummarizedText;
+            RaisePropertyChanged("SummarizedText");
         }
 
         ////public override void Cleanup()
