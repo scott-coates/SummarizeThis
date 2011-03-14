@@ -3,6 +3,9 @@ using GalaSoft.MvvmLight.Command;
 using SummarizerService = SummarizeThis.Core.Summarization.Summarizer;
 using GalaSoft.MvvmLight.Messaging;
 using SummarizeThis.Core.Summarization;
+using System.Collections.ObjectModel;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Summarizer.Win.ViewModel
 {
@@ -43,6 +46,8 @@ namespace Summarizer.Win.ViewModel
         public int NumberOfReturnedSentences { get; set; }
 
         public string SummarizedText { get; set; }
+
+        public ObservableCollection<KeyValuePair<string, int>> MostFrequentWords { get; set; }
 
         public RelayCommand SummarizeCommand
         {

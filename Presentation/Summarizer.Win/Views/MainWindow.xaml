@@ -41,7 +41,5 @@
         <TextBlock Height="23" Margin="36,210,418,0" Name="textBlock2" Text="How many sentences do you want?" VerticalAlignment="Top" />
         <TextBox Height="141" HorizontalAlignment="Left" Margin="36,356,0,0" Name="textBox2" Text="{Binding Path=SummarizedText}" TextWrapping="WrapWithOverflow" VerticalAlignment="Top" VerticalScrollBarVisibility="Auto" Width="812" />
         <TextBlock Height="23" Margin="36,328,551,0" Name="textBlock3" Text="Summarized Text:" VerticalAlignment="Top" />
-        <TextBlock Height="23" Margin="36,516,661,0" Name="textBlock4" Text="Most Frequent Words:" VerticalAlignment="Top" />
-        <Grid Height="87" HorizontalAlignment="Left" Margin="201,516,0,0" Name="grid1" VerticalAlignment="Top" Width="200" />
     </Grid>
 </Window>
