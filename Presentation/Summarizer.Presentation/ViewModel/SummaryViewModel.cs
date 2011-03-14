@@ -1,8 +1,8 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
-using Summarizer.Presentation.Model;
+using Summarizer.Phone.Model;
 
-namespace Summarizer.Presentation.ViewModel
+namespace Summarizer.Phone.ViewModel
 {
     /// <summary>
     /// This class contains properties that a View can data bind to.

@@ -2,9 +2,9 @@
 using GalaSoft.MvvmLight.Command;
 using System.Windows;
 using GalaSoft.MvvmLight.Messaging;
-using Summarizer.Presentation.Model;
+using Summarizer.Phone.Model;
 using SummarizerService = SummarizeThis.Core.Summarization.Summarizer;
-namespace Summarizer.Presentation.ViewModel
+namespace Summarizer.Phone.ViewModel
 {
     /// <summary>
     /// This class contains properties that the main View can data bind to.

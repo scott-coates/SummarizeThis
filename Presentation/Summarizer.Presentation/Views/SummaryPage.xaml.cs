@@ -1,6 +1,6 @@
 ﻿using Microsoft.Phone.Controls;
 
-namespace Summarizer.Presentation.Views
+namespace Summarizer.Phone.Views
 {
     /// <summary>
     /// Description for Page2.

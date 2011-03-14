@@ -12,9 +12,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using Summarizer.Presentation.ViewModel;
+using Summarizer.Phone.ViewModel;
 
-namespace Summarizer.Presentation
+namespace Summarizer.Phone
 {
     public partial class App : Application
     {

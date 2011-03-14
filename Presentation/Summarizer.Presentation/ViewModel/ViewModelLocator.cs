@@ -1,7 +1,7 @@
 ﻿/*
   In App.xaml:
   <Application.Resources>
-      <vm:ViewModelLocatorTemplate xmlns:vm="clr-namespace:Summarizer.Presentation.ViewModel"
+      <vm:ViewModelLocatorTemplate xmlns:vm="clr-namespace:Summarizer.Phone.ViewModel"
                                    x:Key="Locator" />
   </Application.Resources>
   
@@ -10,11 +10,11 @@
   
   OR (WPF only):
   
-  xmlns:vm="clr-namespace:Summarizer.Presentation.ViewModel"
+  xmlns:vm="clr-namespace:Summarizer.Phone.ViewModel"
   DataContext="{Binding Source={x:Static vm:ViewModelLocatorTemplate.ViewModelNameStatic}}"
 */
 
-namespace Summarizer.Presentation.ViewModel
+namespace Summarizer.Phone.ViewModel
 {
     /// <summary>
     /// This class contains static references to all the view models in the
@@ -28,7 +28,7 @@ namespace Summarizer.Presentation.ViewModel
     /// </para>
     /// <code>
     /// &lt;Application.Resources&gt;
-    ///     &lt;vm:ViewModelLocatorTemplate xmlns:vm="clr-namespace:Summarizer.Presentation.ViewModel"
+    ///     &lt;vm:ViewModelLocatorTemplate xmlns:vm="clr-namespace:Summarizer.Phone.ViewModel"
     ///                                  x:Key="Locator" /&gt;
     /// &lt;/Application.Resources&gt;
     /// </code>
@@ -49,7 +49,7 @@ namespace Summarizer.Presentation.ViewModel
     /// the Main property and bind to the ViewModelNameStatic property instead:
     /// </para>
     /// <code>
-    /// xmlns:vm="clr-namespace:Summarizer.Presentation.ViewModel"
+    /// xmlns:vm="clr-namespace:Summarizer.Phone.ViewModel"
     /// DataContext="{Binding Source={x:Static vm:ViewModelLocatorTemplate.ViewModelNameStatic}}"
     /// </code>
     /// </summary>

@@ -2,11 +2,11 @@
 using GalaSoft.MvvmLight.Messaging;
 using System.Text;
 using System;
-using Summarizer.Presentation.Model;
-using Summarizer.Presentation.ViewModel;
-using Summarizer.Presentation.Views;
+using Summarizer.Phone.Model;
+using Summarizer.Phone.ViewModel;
+using Summarizer.Phone.Views;
 
-namespace Summarizer.Presentation
+namespace Summarizer.Phone
 {
     public partial class MainPage : PhoneApplicationPage
     {
