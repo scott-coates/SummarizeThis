@@ -35,7 +35,7 @@
                 </Custom:EventTrigger>
             </Custom:Interaction.Triggers>
         </Button>
-        <TextBox Height="141" HorizontalAlignment="Left" Margin="32,55,0,0" Name="textBox1" VerticalAlignment="Top" Width="812" Text="{Binding Path=InputText}" TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Auto" />
+        <TextBox Height="141" HorizontalAlignment="Left" Margin="32,55,0,0" Name="textBox1" VerticalAlignment="Top" Width="812" Text="{Binding Path=InputText}" TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Auto" AcceptsReturn="True" AcceptsTab="True" />
         <Label Height="35" HorizontalAlignment="Left" Margin="764,239,0,0" Name="label1" VerticalAlignment="Top" Width="80" Content="{Binding Path=Value, ElementName=slider1}" HorizontalContentAlignment="Right" FontSize="14" BorderThickness="1,2,1,0" BorderBrush="#FFAA8E8E" />
         <TextBlock Height="23" Margin="36,27,551,0" Name="textBlock1" Text="Enter Text" VerticalAlignment="Top" />
         <TextBlock Height="23" Margin="36,210,418,0" Name="textBlock2" Text="How many sentences do you want?" VerticalAlignment="Top" />
