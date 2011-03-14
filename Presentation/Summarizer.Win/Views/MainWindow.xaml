@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Custom="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:GalaSoft_MvvmLight_Command="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras"
         mc:Ignorable="d"
-        Height="510"
-        Width="669"
+        Height="688"
+        Width="878"
         Title="MVVM Light Application"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
     
@@ -26,16 +26,22 @@
                    Text="{Binding Welcome}"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
-                   TextWrapping="Wrap" />
-        <Slider Height="35" HorizontalAlignment="Left" Margin="32,212,0,0" Name="slider1" VerticalAlignment="Top" Width="477" SnapsToDevicePixels="True" Value="{Binding Path=NumberOfReturnedSentences}" Minimum="1" Maximum="100" SmallChange="1" LargeChange="10" />
-        <Button Content="Button" Height="36" HorizontalAlignment="Left" Margin="482,268,0,0" Name="button1" VerticalAlignment="Top" Width="120" >
+                   TextWrapping="Wrap" Margin="328,239,319,185" />
+        <Slider Height="35" HorizontalAlignment="Left" Margin="36,239,0,0" Name="slider1" VerticalAlignment="Top" Width="768" SnapsToDevicePixels="True" Value="{Binding Path=NumberOfReturnedSentences}" Minimum="1" Maximum="100" SmallChange="1" LargeChange="10" />
+        <Button Content="Summarize!" Height="36" HorizontalAlignment="Left" Margin="724,305,0,0" Name="button1" VerticalAlignment="Top" Width="120" >
             <Custom:Interaction.Triggers>
                 <Custom:EventTrigger EventName="Click">
                     <GalaSoft_MvvmLight_Command:EventToCommand x:Name="btnPage2Clicked" Command="{Binding SummarizeCommand, Mode=OneWay}"/>
                 </Custom:EventTrigger>
             </Custom:Interaction.Triggers>
         </Button>
-        <TextBox Height="141" HorizontalAlignment="Left" Margin="32,55,0,0" Name="textBox1" VerticalAlignment="Top" Width="570" Text="{Binding Path=InputText}" />
-        <Label Height="35" HorizontalAlignment="Left" Margin="522,212,0,0" Name="label1" VerticalAlignment="Top" Width="80" Content="{Binding Path=Value, ElementName=slider1}" HorizontalContentAlignment="Right" FontSize="14" BorderThickness="1,2,1,0" BorderBrush="#FFAA8E8E" />
+        <TextBox Height="141" HorizontalAlignment="Left" Margin="32,55,0,0" Name="textBox1" VerticalAlignment="Top" Width="812" Text="{Binding Path=InputText}" TextWrapping="WrapWithOverflow" VerticalScrollBarVisibility="Auto" />
+        <Label Height="35" HorizontalAlignment="Left" Margin="764,239,0,0" Name="label1" VerticalAlignment="Top" Width="80" Content="{Binding Path=Value, ElementName=slider1}" HorizontalContentAlignment="Right" FontSize="14" BorderThickness="1,2,1,0" BorderBrush="#FFAA8E8E" />
+        <TextBlock Height="23" Margin="36,27,551,0" Name="textBlock1" Text="Enter Text" VerticalAlignment="Top" />
+        <TextBlock Height="23" Margin="36,210,418,0" Name="textBlock2" Text="How many sentences do you want?" VerticalAlignment="Top" />
+        <TextBox Height="141" HorizontalAlignment="Left" Margin="36,356,0,0" Name="textBox2" Text="{Binding Path=InputText}" TextWrapping="WrapWithOverflow" VerticalAlignment="Top" VerticalScrollBarVisibility="Auto" Width="812" />
+        <TextBlock Height="23" Margin="36,328,551,0" Name="textBlock3" Text="Summarized Text:" VerticalAlignment="Top" />
+        <TextBlock Height="23" Margin="36,516,661,0" Name="textBlock4" Text="Most Frequent Words:" VerticalAlignment="Top" />
+        <Grid Height="87" HorizontalAlignment="Left" Margin="201,516,0,0" Name="grid1" VerticalAlignment="Top" Width="200" />
     </Grid>
 </Window>

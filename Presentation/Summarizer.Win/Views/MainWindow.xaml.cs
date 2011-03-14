@@ -19,7 +19,6 @@ namespace Summarizer.Win
         {
             InitializeComponent();
             
-            Messenger.Default.Register<Summary>(this, (x) => new SummaryWindow().Show());
             Closing += (s, e) => ViewModelLocator.Cleanup();
         }
     }
