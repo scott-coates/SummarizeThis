@@ -713,66 +713,66 @@ namespace SummarizeThis.Core.Stem
             return dirty;
         }
 
-        /// <summary>Test program for demonstrating the Stemmer.  It reads a file and
-        /// stems each word, writing the result to standard out.
-        /// Usage: Stemmer file-name
-        /// </summary>
-        [STAThread]
-        public static void Main(String[] args)
-        {
-            var s = new PorterStemmer();
+        ///// <summary>Test program for demonstrating the Stemmer.  It reads a file and
+        ///// stems each word, writing the result to standard out.
+        ///// Usage: Stemmer file-name
+        ///// </summary>
+        //[STAThread]
+        //public static void Main(String[] args)
+        //{
+        //    var s = new PorterStemmer();
 
-            for (int i = 0; i < args.Length; i++)
-            {
-                try
-                {
-                    Stream in_Renamed = new FileStream(args[i], FileMode.Open, FileAccess.Read);
-                    var buffer = new byte[1024];
-                    int bufferLen, offset, ch;
+        //    for (int i = 0; i < args.Length; i++)
+        //    {
+        //        try
+        //        {
+        //            Stream in_Renamed = new FileStream(args[i], FileMode.Open, FileAccess.Read);
+        //            var buffer = new byte[1024];
+        //            int bufferLen, offset, ch;
 
-                    bufferLen = in_Renamed.Read(buffer, 0, buffer.Length);
-                    offset = 0;
-                    s.Reset();
+        //            bufferLen = in_Renamed.Read(buffer, 0, buffer.Length);
+        //            offset = 0;
+        //            s.Reset();
 
-                    while (true)
-                    {
-                        if (offset < bufferLen)
-                            ch = buffer[offset++];
-                        else
-                        {
-                            bufferLen = in_Renamed.Read(buffer, 0, buffer.Length);
-                            offset = 0;
-                            if (bufferLen < 0)
-                                ch = -1;
-                            else
-                                ch = buffer[offset++];
-                        }
+        //            while (true)
+        //            {
+        //                if (offset < bufferLen)
+        //                    ch = buffer[offset++];
+        //                else
+        //                {
+        //                    bufferLen = in_Renamed.Read(buffer, 0, buffer.Length);
+        //                    offset = 0;
+        //                    if (bufferLen < 0)
+        //                        ch = -1;
+        //                    else
+        //                        ch = buffer[offset++];
+        //                }
 
-                        if (Char.IsLetter((char) ch))
-                        {
-                            s.Add(Char.ToLower((char) ch));
-                        }
-                        else
-                        {
-                            s.Stem();
-                            Console.Out.Write(s.ToString());
-                            s.Reset();
-                            if (ch < 0)
-                                break;
-                            else
-                            {
-                                Console.Out.Write((char) ch);
-                            }
-                        }
-                    }
+        //                if (Char.IsLetter((char) ch))
+        //                {
+        //                    s.Add(Char.ToLower((char) ch));
+        //                }
+        //                else
+        //                {
+        //                    s.Stem();
+        //                    Console.Out.Write(s.ToString());
+        //                    s.Reset();
+        //                    if (ch < 0)
+        //                        break;
+        //                    else
+        //                    {
+        //                        Console.Out.Write((char) ch);
+        //                    }
+        //                }
+        //            }
 
-                    in_Renamed.Close();
-                }
-                catch (IOException e)
-                {
-                    Console.Out.WriteLine("error reading " + args[i]);
-                }
-            }
-        }
+        //            in_Renamed.Close();
+        //        }
+        //        catch (IOException e)
+        //        {
+        //            Console.Out.WriteLine("error reading " + args[i]);
+        //        }
+        //    }
+        //}
     }
 }

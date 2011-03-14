@@ -21,8 +21,8 @@
 	<Grid x:Name="LayoutRoot"
 	      Background="Transparent">
 		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto" />
-			<RowDefinition Height="*" />
+			<RowDefinition Height="Auto" MinHeight="63" />
+			<RowDefinition />
 		</Grid.RowDefinitions>
 
 		<!--TitlePanel contains the name of the application and page title-->
@@ -32,24 +32,22 @@
 			<TextBlock x:Name="ApplicationTitle"
 			           Text="{Binding ApplicationTitle}"
 			           Style="{StaticResource PhoneTextNormalStyle}" />
-			<TextBlock x:Name="PageTitle"
-			           Text="{Binding PageName}"
-			           Margin="-3,-8,0,0"
-			           Style="{StaticResource PhoneTextTitle1Style}" />
 		</StackPanel>
 
 		<!--ContentPanel - place additional content here-->
 		<Grid x:Name="ContentGrid"
 		      Grid.Row="1" Canvas.ZIndex="7" Margin="-8,8,8,-8" d:LayoutOverrides="GridBox">
-			<Button x:Name="btnPage2" Content="Summarize!" Margin="76,249,118,293">
+			<Button x:Name="btnPage2" Content="Summarize!" Margin="59,0,57,88" Height="75" VerticalAlignment="Bottom" Foreground="#FFCEC70F" BorderBrush="#FFABB226">
 				<Custom:Interaction.Triggers>
 					<Custom:EventTrigger EventName="Click">
 						<GalaSoft_MvvmLight_Command:EventToCommand x:Name="btnPage2Clicked" Command="{Binding SummarizeCommand, Mode=OneWay}"/>
 					</Custom:EventTrigger>
 				</Custom:Interaction.Triggers>
 			</Button>
-			<TextBox x:Name="txtFull" Margin="75,83,119,0" TextWrapping="Wrap" VerticalAlignment="Top" ToolTipService.ToolTip="Enter in text to summarize" Text="{Binding Path=InputText, Mode=TwoWay}" />
-			<TextBox x:Name="txtNoOfSentences" Margin="75,155,119,0" TextWrapping="Wrap" VerticalAlignment="Top" ToolTipService.ToolTip="Enter in text to summarize" Text="{Binding NumberOfReturnedSentences, Mode=TwoWay}" />
+			<TextBox x:Name="txtFull" Margin="59,130,57,345" TextWrapping="Wrap" ToolTipService.ToolTip="Enter in text to summarize" FontSize="16" FontFamily="Segoe WP Light" Text="{Binding InputText, Mode=TwoWay}" />
+			<TextBox x:Name="txtNoOfSentences" Margin="59,0,57,216" TextWrapping="Wrap" ToolTipService.ToolTip="Enter in text to summarize" VerticalAlignment="Bottom" FontSize="18.667" Text="{Binding NumberOfReturnedSentences, Mode=TwoWay}" />
+			<TextBox x:Name="txtNoOfSentences_Copy" Margin="53,0,63,257" TextWrapping="Wrap" ToolTipService.ToolTip="Enter in text to summarize" SelectionBackground="#FF080808" Background="#BF020202" BorderBrush="#BF020202" Text="Select number of sentences to return in results..." Foreground="#FF003EFF" FontSize="18.667" Height="88" VerticalAlignment="Bottom" />
+			<TextBlock Height="66" Margin="72,105,79,0" TextWrapping="Wrap" Text="Enter text to be summarized..." VerticalAlignment="Top" Foreground="#FF003EFF"/>
 		</Grid>
 	</Grid>
     

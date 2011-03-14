@@ -57,13 +57,19 @@
     <Compile Include="..\..\Core\SummarizeThis.Core\Frequency\SentenceFrequency.cs">
       <Link>SentenceFrequency.cs</Link>
     </Compile>
+    <Compile Include="..\..\Core\SummarizeThis.Core\Stem\Interfaces\IStemmer.cs">
+      <Link>IStemmer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Core\SummarizeThis.Core\Stem\PorterStemmer.cs">
+      <Link>PorterStemmer.cs</Link>
+    </Compile>
     <Compile Include="..\..\Core\SummarizeThis.Core\StopWord\Interfaces\IStopWordProvider.cs">
       <Link>IStopWordProvider.cs</Link>
     </Compile>
     <Compile Include="..\..\Core\SummarizeThis.Core\StopWord\Interfaces\IStopWordService.cs">
       <Link>IStopWordService.cs</Link>
     </Compile>
-    <Compile Include="..\..\Core\SummarizeThis.Core\StopWord\Interfaces\StopWordProvider.cs">
+    <Compile Include="..\..\Core\SummarizeThis.Core\StopWord\StopWordProvider.cs">
       <Link>StopWordProvider.cs</Link>
     </Compile>
     <Compile Include="..\..\Core\SummarizeThis.Core\StopWord\StopWordService.cs">
