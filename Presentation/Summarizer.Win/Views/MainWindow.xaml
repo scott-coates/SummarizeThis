@@ -36,6 +36,6 @@
             </Custom:Interaction.Triggers>
         </Button>
         <TextBox Height="141" HorizontalAlignment="Left" Margin="32,55,0,0" Name="textBox1" VerticalAlignment="Top" Width="570" Text="{Binding Path=InputText}" />
-        <Label Height="35" HorizontalAlignment="Left" Margin="522,212,0,0" Name="label1" VerticalAlignment="Top" Width="80" Content="{Binding Path=Value, ElementName=slider1}" />
+        <Label Height="35" HorizontalAlignment="Left" Margin="522,212,0,0" Name="label1" VerticalAlignment="Top" Width="80" Content="{Binding Path=Value, ElementName=slider1}" HorizontalContentAlignment="Right" FontSize="14" BorderThickness="1,2,1,0" BorderBrush="#FFAA8E8E" />
     </Grid>
 </Window>
