@@ -20,8 +20,8 @@ namespace SummarizeThis.Core.Frequency
 
             var group = (from t in tokens
                          group t by t.ToLower()
-                             into g
-                             select g);
+                         into g
+                         select g);
 
             var groupAsDictionary = group.ToDictionary(x => x.Key, x => x.Count());
 
@@ -43,28 +43,32 @@ namespace SummarizeThis.Core.Frequency
             return retVal;
         }
 
-        private IEnumerable<SentenceFrequency> SearchSentencesForKeyWords(IEnumerable<string> sentences,
+        private IEnumerable<SentenceFrequency> SearchSentencesForKeyWords(IList<string> sentences,
                                                                           Dictionary<string, int> mostFrequentWords)
         {
             var retVal = new List<SentenceFrequency>();
+            string sentence = null;
 
-            foreach (
-                var sentence in
-                    sentences.Where(sentence => !retVal.Any(x => x.Sentence.ToLower() == sentence.ToLower())))
+            for (int i = 0; i < sentences.Count; i++)
             {
-                retVal.Add(GetScore(sentence, mostFrequentWords));
+                sentence = sentences[i];
+                if (!retVal.Any(x => x.Sentence.ToLower() == sentence.ToLower()))
+                {
+                    retVal.Add(GetScore(sentence, i, mostFrequentWords));
+                }
             }
 
             return retVal;
         }
 
-        private SentenceFrequency GetScore(string sentence, Dictionary<string, int> mostFrequentWords)
+        private SentenceFrequency GetScore(string sentence, int sentenceNumber,
+                                           Dictionary<string, int> mostFrequentWords)
         {
             int score = mostFrequentWords
                 .Where(word => sentence.Contains(word.Key))
                 .Sum(word => word.Value);
 
-            return new SentenceFrequency(sentence, score);
+            return new SentenceFrequency(sentence, score, sentenceNumber);
         }
     }
 }

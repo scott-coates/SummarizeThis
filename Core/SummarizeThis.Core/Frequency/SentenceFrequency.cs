@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace SummarizeThis.Core.Frequency
 {
@@ -9,13 +6,15 @@ namespace SummarizeThis.Core.Frequency
     {
         public string Sentence { get; private set; }
         public int Score { get; private set; }
+        public int SentenceNumber { get; private set; }
 
-        public SentenceFrequency(string sentence, int score)
+        public SentenceFrequency(string sentence, int score, int sentenceNumber)
         {
             if (sentence == null) throw new ArgumentNullException("score");
 
             Sentence = sentence;
             Score = score;
+            SentenceNumber = sentenceNumber;
         }
     }
 }

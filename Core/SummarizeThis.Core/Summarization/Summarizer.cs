@@ -36,12 +36,16 @@ namespace SummarizeThis.Core.Summarization
             Dictionary<string, int> mostFrequentWords =
                 wordFrequency.OrderByDescending(x => x.Value).Take(100).ToDictionary(x => x.Key,
                                                                                      x => x.Value);
-            
-            IEnumerable<SentenceFrequency> sentencesScores =
-                _frequencer.GetSentencesWithMostFrequentWords(input, mostFrequentWords).OrderByDescending(x => x.Score);
 
-            return new TextSummary(sentencesScores, wordFrequency, mostFrequentWords,
-                                   numberOfSentences);
+            IEnumerable<SentenceFrequency> sentencesScores =
+                _frequencer.GetSentencesWithMostFrequentWords(input, mostFrequentWords);
+
+            var highestRankedSentences = sentencesScores.OrderByDescending(x => x.Score).Take(numberOfSentences).OrderBy(x => x.SentenceNumber);
+
+            var summarizedText = string.Join(" ", highestRankedSentences.Select(x => x.Sentence).ToArray());
+
+            return new TextSummary(sentencesScores, highestRankedSentences, wordFrequency, mostFrequentWords,
+                                   numberOfSentences, summarizedText);
         }
     }
 }
