@@ -73,7 +73,59 @@ namespace Summarizer.Win.ViewModel
 
             CreateMain();
         }
+        private static SummaryViewModel _summaryViewModel;
 
+        /// <summary>
+        /// Gets the SummaryViewModel property.
+        /// </summary>
+        public static SummaryViewModel SummaryViewModelStatic
+        {
+            get
+            {
+                if (_summaryViewModel == null)
+                {
+                    CreateSummaryViewModel();
+                }
+
+                return _summaryViewModel;
+            }
+        }
+
+        /// <summary>
+        /// Gets the SummaryViewModel property.
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance",
+            "CA1822:MarkMembersAsStatic",
+            Justification = "This non-static member is needed for data binding purposes.")]
+        public SummaryViewModel SummaryViewModel
+        {
+            get
+            {
+                return SummaryViewModelStatic;
+            }
+        }
+
+        /// <summary>
+        /// Provides a deterministic way to delete the SummaryViewModel property.
+        /// </summary>
+        public static void ClearSummaryViewModel()
+        {
+            _summaryViewModel.Cleanup();
+            _summaryViewModel = null;
+        }
+
+        /// <summary>
+        /// Provides a deterministic way to create the SummaryViewModel property.
+        /// </summary>
+        public static void CreateSummaryViewModel()
+        {
+            if (_summaryViewModel == null)
+            {
+                _summaryViewModel = new SummaryViewModel();
+            }
+        }
+
+        
         /// <summary>
         /// Gets the Main property.
         /// </summary>
@@ -130,6 +182,7 @@ namespace Summarizer.Win.ViewModel
         public static void Cleanup()
         {
             ClearMain();
+            ClearSummaryViewModel();
         }
     }
 }
