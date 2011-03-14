@@ -53,9 +53,7 @@ namespace SummarizeThis.Core.Frequency
                 IEnumerable<SentenceFrequency> sentenceFrequencies = SearchSentencesForKeyWords(numberOfSentences,
                                                                                                 convertedSentences.
                                                                                                     ToList(),
-                                                                                                mostFrequentWords)
-                    .OrderBy(x => x.Score);
-
+                                                                                                mostFrequentWords);
                 retVal = sentenceFrequencies.Select(x => x.Sentence);
             }
 
@@ -68,7 +66,9 @@ namespace SummarizeThis.Core.Frequency
         {
             var retVal = new List<SentenceFrequency>();
 
-            foreach (var sentence in sentences.Where(sentence => !retVal.Any(x => x.Sentence == sentence)))
+            foreach (
+                var sentence in
+                    sentences.Where(sentence => !retVal.Any(x => x.Sentence.ToLower() == sentence.ToLower())))
             {
                 retVal.Add(GetScore(sentence, mostFrequentWords));
             }
