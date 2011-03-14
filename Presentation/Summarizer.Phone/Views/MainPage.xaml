@@ -5,6 +5,7 @@
                             xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
                             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            xmlns:local="clr-namespace:Summarizer.Phone"
                             xmlns:Custom="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:GalaSoft_MvvmLight_Command="clr-namespace:GalaSoft.MvvmLight.Command;assembly=GalaSoft.MvvmLight.Extras.WP7" x:Class="Summarizer.Phone.MainPage"
                             FontFamily="{StaticResource PhoneFontFamilyNormal}"
                             FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -17,41 +18,42 @@
                             shell:SystemTray.IsVisible="True"
                             DataContext="{Binding Main, Source={StaticResource Locator}}">
 
-	<!--LayoutRoot contains the root grid where all other page content is placed-->
-	<Grid x:Name="LayoutRoot"
+    <!--LayoutRoot contains the root grid where all other page content is placed-->
+    <Grid x:Name="LayoutRoot"
 	      Background="Transparent">
-		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto" MinHeight="63" />
-			<RowDefinition />
-		</Grid.RowDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" MinHeight="63" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
 
-		<!--TitlePanel contains the name of the application and page title-->
-		<StackPanel x:Name="TitlePanel"
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel"
 		            Grid.Row="0"
 		            Margin="24,24,0,12">
-			<TextBlock x:Name="ApplicationTitle"
+            <TextBlock x:Name="ApplicationTitle"
 			           Text="{Binding ApplicationTitle}"
 			           Style="{StaticResource PhoneTextNormalStyle}" />
-		</StackPanel>
+        </StackPanel>
 
-		<!--ContentPanel - place additional content here-->
-		<Grid x:Name="ContentGrid"
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentGrid"
 		      Grid.Row="1" Canvas.ZIndex="7" Margin="-8,8,8,-8" d:LayoutOverrides="GridBox">
-			<Button x:Name="btnPage2" Content="Summarize!" Margin="59,0,57,88" Height="75" VerticalAlignment="Bottom" Foreground="#FFCEC70F" BorderBrush="#FFABB226">
-				<Custom:Interaction.Triggers>
-					<Custom:EventTrigger EventName="Click">
-						<GalaSoft_MvvmLight_Command:EventToCommand x:Name="btnPage2Clicked" Command="{Binding SummarizeCommand, Mode=OneWay}"/>
-					</Custom:EventTrigger>
-				</Custom:Interaction.Triggers>
-			</Button>
-			<TextBox x:Name="txtFull" Margin="59,130,57,345" TextWrapping="Wrap" ToolTipService.ToolTip="Enter in text to summarize" FontSize="16" FontFamily="Segoe WP Light" Text="{Binding InputText, Mode=TwoWay}" />
-			<TextBox x:Name="txtNoOfSentences" Margin="59,0,57,216" TextWrapping="Wrap" ToolTipService.ToolTip="Enter in text to summarize" VerticalAlignment="Bottom" FontSize="18.667" Text="{Binding NumberOfReturnedSentences, Mode=TwoWay}" />
-			<TextBox x:Name="txtNoOfSentences_Copy" Margin="53,0,63,257" TextWrapping="Wrap" ToolTipService.ToolTip="Enter in text to summarize" SelectionBackground="#FF080808" Background="#BF020202" BorderBrush="#BF020202" Text="Select number of sentences to return in results..." Foreground="#FF003EFF" FontSize="18.667" Height="88" VerticalAlignment="Bottom" />
-			<TextBlock Height="66" Margin="72,105,79,0" TextWrapping="Wrap" Text="Enter text to be summarized..." VerticalAlignment="Top" Foreground="#FF003EFF"/>
-		</Grid>
-	</Grid>
-    
-	<!-- Sample code showing usage of ApplicationBar
+            <Button x:Name="btnPage2" Content="Summarize!" Margin="59,0,57,88" Height="75" VerticalAlignment="Bottom" Foreground="#FFCEC70F" BorderBrush="#FFABB226">
+                <Custom:Interaction.Triggers>
+                    <Custom:EventTrigger EventName="Click">
+                        <GalaSoft_MvvmLight_Command:EventToCommand x:Name="btnPage2Clicked" Command="{Binding SummarizeCommand, Mode=OneWay}"/>
+                    </Custom:EventTrigger>
+                </Custom:Interaction.Triggers>
+            </Button>
+            <TextBox x:Name="txtFull" Margin="59,130,57,345" TextWrapping="Wrap" ToolTipService.ToolTip="Enter in text to summarize" FontSize="16" FontFamily="Segoe WP Light" Text="{Binding InputText, Mode=TwoWay}" />
+            <TextBox x:Name="txtNoOfSentences_Copy" Margin="53,0,63,257" TextWrapping="Wrap" ToolTipService.ToolTip="Enter in text to summarize" SelectionBackground="#FF080808" Background="#BF020202" BorderBrush="#BF020202" Text="Select number of sentences to return in results..." Foreground="#FF003EFF" FontSize="18.667" Height="88" VerticalAlignment="Bottom" />
+            <TextBlock Height="66" Margin="72,105,79,0" TextWrapping="Wrap" Text="Enter text to be summarized..." VerticalAlignment="Top" Foreground="#FF003EFF"/>
+            <local:PhoneSlider x:Name="sentencesReturned" Minimum="1" Maximum="100" Style="{StaticResource sliderStyle}" Margin="72,0,137,169" Height="82" VerticalAlignment="Bottom" LargeChange="10" SmallChange="1" Value="{Binding Path=NumberOfReturnedSentences}" />
+            <TextBlock Height="30" HorizontalAlignment="Left" Margin="349,454,0,0" Name="txtDisplaySentences" Text="{Binding ElementName=sentencesReturned, Path=Value}" VerticalAlignment="Top" TextAlignment="Right" Width="52" />
+        </Grid>
+    </Grid>
+
+    <!-- Sample code showing usage of ApplicationBar
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
             <shell:ApplicationBarIconButton x:Name="appbar_button1" IconUri="/Images/appbar_button1.png" Text="Button 1"></shell:ApplicationBarIconButton>
