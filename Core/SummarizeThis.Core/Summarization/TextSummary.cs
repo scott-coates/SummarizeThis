@@ -9,11 +9,11 @@ namespace SummarizeThis.Core.Summarization
     {
         public string SummarizedText { get; private set; }
         public Dictionary<string, int> WordFrequency { get; private set; }
-        public IEnumerable<string> MostFrequentWords { get; private set; }
+        public Dictionary<string, int> MostFrequentWords { get; private set; }
         public int ReturnedSentences { get; private set; }
 
         public TextSummary(string summarizedText, Dictionary<string, int> wordFrequency,
-                           IEnumerable<string> mostFrequentWords,
+                           Dictionary<string, int> mostFrequentWords,
                            int returnedSentences)
         {
             SummarizedText = summarizedText;

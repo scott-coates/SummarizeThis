@@ -30,9 +30,8 @@ namespace SummarizeThis.Core.Summarization
         public TextSummary Summarize(string input, int numberOfSentences)
         {
             Dictionary<string, int> wordFrequency = _frequencer.GetWordFrequency(input);
-            IEnumerable<string> mostFrequentWords = _frequencer.GetMostFrequentWords(100, wordFrequency);
-            IEnumerable<string> sentencesWithMostFrequentWords =
-                _frequencer.GetSentencesWithMostFrequentWords(numberOfSentences, input, mostFrequentWords);
+            Dictionary<string, int> mostFrequentWords = _frequencer.GetMostFrequentWords(100, wordFrequency);
+            IEnumerable<string> sentencesWithMostFrequentWords = _frequencer.GetSentencesWithMostFrequentWords(numberOfSentences, input, mostFrequentWords);
 
             string summarizedText = string.Join(" ", sentencesWithMostFrequentWords.ToArray());
 

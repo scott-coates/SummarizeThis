@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using SummarizeThis.Core.Frequency.Interfaces;
-using SummarizeThis.Core.Stem.Interfaces;
 using SummarizeThis.Core.Tokenization.Interfaces;
-using Lucene.Net.Analysis;
 
 namespace SummarizeThis.Core.Frequency
 {
@@ -31,17 +28,17 @@ namespace SummarizeThis.Core.Frequency
             return groupAsDictionary;
         }
 
-        public IEnumerable<string> GetMostFrequentWords(int howManyWords, Dictionary<string, int> wordFrequencies)
+        public Dictionary<string, int> GetMostFrequentWords(int howManyWords, Dictionary<string, int> wordFrequencies)
         {
-            //The logic is to grab the top x frequent words. We are not simply ordering by frequency, we're ordering by the 
-            //sequence of words entered by the user and frequency.
+            //The logic is to grab the top x frequent words. We are not simply ordering by score, we're ordering by the 
+            //sequence of words entered by the user and score.
 
-            return wordFrequencies.OrderByDescending(x => x.Value).Select(x => x.Key).Take(howManyWords);
+            return wordFrequencies.OrderByDescending(x => x.Value).Take(howManyWords).ToDictionary(x => x.Key, x => x.Value);
         }
 
         public IEnumerable<string> GetSentencesWithMostFrequentWords(int numberOfSentences,
                                                                      string input,
-                                                                     IEnumerable<string> mostFrequentWords)
+                                                                     Dictionary<string, int> mostFrequentWords)
         {
             IEnumerable<string> retVal = null;
             IEnumerable<string> convertedSentences = _tokenizer.TokenizeSentences(input);
@@ -54,10 +51,8 @@ namespace SummarizeThis.Core.Frequency
             {
                 IEnumerable<SentenceFrequency> sentenceFrequencies = SearchSentencesForKeyWords(numberOfSentences,
                                                                                                 convertedSentences.
-                                                                                                    ToList(),
-                                                                                                mostFrequentWords.ToList
-                                                                                                    ())
-                    .OrderBy(x => x.SentenceNumber);
+                                                                                                    ToList(), mostFrequentWords)
+                    .OrderBy(x => x.Score);
 
                 retVal = sentenceFrequencies.Select(x => x.Sentence);
             }
@@ -65,26 +60,25 @@ namespace SummarizeThis.Core.Frequency
             return retVal;
         }
 
-        private IEnumerable<SentenceFrequency> SearchSentencesForKeyWords(int numberOfSentences, List<string> sentences,
-                                                                          IList<string> mostFrequentWords)
+        private IEnumerable<SentenceFrequency> SearchSentencesForKeyWords(int numberOfSentences, IEnumerable<string> sentences,
+                                                                          Dictionary<string, int> mostFrequentWords)
         {
             var alreadProcessed = new List<string>();
 
-            for (int i = 0; i < numberOfSentences; i++)
-            {
-                for (int j = 0; j < sentences.Count; j++)
-                {
-                    string sentenceToLower = sentences[j].ToLower();
-                    if (sentenceToLower.Contains(mostFrequentWords[i].ToLower()) &&
-                        !alreadProcessed.Contains(sentenceToLower))
-                    {
-                        var sentFreq = new SentenceFrequency(sentences[j], j);
-                        alreadProcessed.Add(sentenceToLower);
-                        yield return sentFreq;
-                        break; //this word is found. move to next most frequent word.
-                    }
-                }
-            }
+            IEnumerable<SentenceFrequency> retVal = (from sentence in sentences
+                                                     where !alreadProcessed.Contains(sentence)
+                                                     select GetScore(sentence, mostFrequentWords));
+
+            return retVal.OrderByDescending(x => x.Score).Take(numberOfSentences);
+        }
+
+        private SentenceFrequency GetScore(string sentence, Dictionary<string, int> mostFrequentWords)
+        {
+            int score = mostFrequentWords
+                .Where(word => sentence.Contains(word.Key))
+                .Sum(word => word.Value);
+
+            return new SentenceFrequency(sentence, score);
         }
     }
 }

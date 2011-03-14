@@ -57,7 +57,7 @@ As always, if you have any questions please do not hesitate to ask.";
             const string input =
                 "NClassifier is a dotnet assembly for working with text.  NClassifier includes a summarizer.";
             const string expectedResult = "nclassifi";
-            string result = _summarizer.Summarize(input, 1).MostFrequentWords.First();
+            string result = _summarizer.Summarize(input, 1).MostFrequentWords.First().Key;
             Assert.AreEqual(expectedResult, result);
         }
 
@@ -80,7 +80,7 @@ As always, if you have any questions please do not hesitate to ask.";
             const string input =
                 "NClassifier is a dotnet assembly for working with text. NClassifier includes a summarizer. A Summarizer allows the summary of text. A Summarizer is really cool. I don't think there are any other dotnet summarizers.";
 
-            string result = _summarizer.Summarize(input, 2).MostFrequentWords.First();
+            string result = _summarizer.Summarize(input, 2).MostFrequentWords.First().Key;
 
             Assert.AreEqual("summar", result);
         }
