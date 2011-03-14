@@ -20,8 +20,8 @@ namespace SummarizeThis.Core.Frequency
 
             var group = (from t in tokens
                          group t by t.ToLower()
-                             into g
-                             select g);
+                         into g
+                         select g);
 
             var groupAsDictionary = group.ToDictionary(x => x.Key, x => x.Count());
 
@@ -33,7 +33,8 @@ namespace SummarizeThis.Core.Frequency
             //The logic is to grab the top x frequent words. We are not simply ordering by score, we're ordering by the 
             //sequence of words entered by the user and score.
 
-            return wordFrequencies.OrderByDescending(x => x.Value).Take(howManyWords).ToDictionary(x => x.Key, x => x.Value);
+            return wordFrequencies.OrderByDescending(x => x.Value).Take(howManyWords).ToDictionary(x => x.Key,
+                                                                                                   x => x.Value);
         }
 
         public IEnumerable<string> GetSentencesWithMostFrequentWords(int numberOfSentences,
@@ -51,7 +52,8 @@ namespace SummarizeThis.Core.Frequency
             {
                 IEnumerable<SentenceFrequency> sentenceFrequencies = SearchSentencesForKeyWords(numberOfSentences,
                                                                                                 convertedSentences.
-                                                                                                    ToList(), mostFrequentWords)
+                                                                                                    ToList(),
+                                                                                                mostFrequentWords)
                     .OrderBy(x => x.Score);
 
                 retVal = sentenceFrequencies.Select(x => x.Sentence);
@@ -60,14 +62,16 @@ namespace SummarizeThis.Core.Frequency
             return retVal;
         }
 
-        private IEnumerable<SentenceFrequency> SearchSentencesForKeyWords(int numberOfSentences, IEnumerable<string> sentences,
+        private IEnumerable<SentenceFrequency> SearchSentencesForKeyWords(int numberOfSentences,
+                                                                          IEnumerable<string> sentences,
                                                                           Dictionary<string, int> mostFrequentWords)
         {
-            var alreadProcessed = new List<string>();
+            var retVal = new List<SentenceFrequency>();
 
-            IEnumerable<SentenceFrequency> retVal = (from sentence in sentences
-                                                     where !alreadProcessed.Contains(sentence)
-                                                     select GetScore(sentence, mostFrequentWords));
+            foreach (var sentence in sentences.Where(sentence => !retVal.Any(x => x.Sentence == sentence)))
+            {
+                retVal.Add(GetScore(sentence, mostFrequentWords));
+            }
 
             return retVal.OrderByDescending(x => x.Score).Take(numberOfSentences);
         }
