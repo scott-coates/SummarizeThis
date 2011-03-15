@@ -2,6 +2,7 @@
 using System.Linq;
 using SummarizeThis.Core.Frequency.Interfaces;
 using SummarizeThis.Core.Tokenization.Interfaces;
+using System.Text.RegularExpressions;
 
 namespace SummarizeThis.Core.Frequency
 {
@@ -64,9 +65,12 @@ namespace SummarizeThis.Core.Frequency
         private SentenceFrequency GetScore(string sentence, int sentenceNumber,
                                            Dictionary<string, int> mostFrequentWords)
         {
-            int score = mostFrequentWords
-                .Where(word => sentence.Contains(word.Key))
-                .Sum(word => word.Value);
+            int score = (from word in
+                             mostFrequentWords
+                         let occurence = Regex.Matches(sentence, word.Key).Count
+                         where occurence > 0
+                         select word.Value*occurence)
+                .Sum(x => x);
 
             return new SentenceFrequency(sentence, score, sentenceNumber);
         }

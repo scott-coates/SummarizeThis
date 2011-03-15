@@ -52,6 +52,16 @@ As always, if you have any questions please do not hesitate to ask.";
         }
 
         [Test]
+        public void FrequentWordsAddToScore()
+        {
+            const string input =
+                "I love dogs. dogs dogs dogs. No cats. Only dogs.";
+            const string expectedResult = "dogs dogs dogs.";
+            var result = _summarizer.Summarize(input, 1);
+            Assert.AreEqual(expectedResult, result.SummarizedText);
+        }
+
+        [Test]
         public void MostFrequentWord()
         {
             const string input =
@@ -68,7 +78,7 @@ As always, if you have any questions please do not hesitate to ask.";
                 "NClassifier is a dotnet assembly for working with text. NClassifier includes a summarizer. A Summarizer allows the summary of text. A Summarizer is really cool. I don't think there are any other dotnet summarizers.";
             const string expectedResult =
                 "A Summarizer allows the summary of text. I don't think there are any other dotnet summarizers.";
-             
+
             var result = _summarizer.Summarize(input, 2);
 
             Assert.AreEqual(expectedResult, result.SummarizedText);
@@ -115,7 +125,7 @@ As always, if you have any questions please do not hesitate to ask.";
         public void CorrectOrder()
         {
             const string expected =
-                "A help desk system provides IT with work flow that supports the process of providing structured service and support to the end-users. Attached to this communication is a printable reference sheet that will help you choose your priority when you submit your ticket to the help desk. Keep in mind if you have a working system and call the help desk they will ask you to submit a ticket through the portal.";
+                "In general, a help desk is where end-users go to for support when they can't solve an issue themselves or through the help of others. A help desk system provides IT with work flow that supports the process of providing structured service and support to the end-users. Attached to this communication is a printable reference sheet that will help you choose your priority when you submit your ticket to the help desk.";
 
 
             TextSummary result = _summarizer.Summarize(_bigInput, 3);
