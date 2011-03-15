@@ -53,7 +53,8 @@ namespace Summarizer.Phone.ViewModel
         /// </summary>
         public MainViewModel()
         {
-            SummarizeCommand = new RelayCommand(() => Summarize());
+            SummarizeCommand = new RelayCommand(() => Summarize()
+                , () => !string.IsNullOrEmpty(InputText));
 
             if (IsInDesignMode)
             {
