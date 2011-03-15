@@ -40,7 +40,7 @@
 
 			<TextBlock x:Name="txtSummary" Text="{Binding SummarizedText}"
 			           Style="{StaticResource PhoneTextNormalStyle}"
-			           FontSize="40" VerticalAlignment="Top" />
+			           FontSize="40" VerticalAlignment="Top" TextWrapping="Wrap" />
 			<TextBlock x:Name="txtSentences" Text="{Binding NumberOfSentences}"
 				Style="{StaticResource PhoneTextNormalStyle}"
 				FontSize="40" VerticalAlignment="Top" Margin="12,57,12,0" />
