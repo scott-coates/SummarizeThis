@@ -67,6 +67,11 @@ namespace Summarizer.Phone.ViewModel
 
         private void Summarize()
         {
+            if (NumberOfReturnedSentences < 1)
+            {
+                NumberOfReturnedSentences = 1;
+            }
+
             string summarizedText = _summarizer.Summarize(InputText, NumberOfReturnedSentences).SummarizedText;
 
             var summary = new Summary(summarizedText, NumberOfReturnedSentences);
