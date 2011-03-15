@@ -18,6 +18,12 @@ namespace Summarizer.Phone
             SizeChanged += new SizeChangedEventHandler(PhoneSlider_SizeChanged);
         }
 
+        protected override void OnValueChanged(double oldValue, double newValue)
+        {
+            base.OnValueChanged(oldValue, newValue);
+            Value = Math.Round(newValue);
+        }
+
         void PhoneSlider_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             if (e.NewSize.Width > 0 && e.NewSize.Height > 0)
