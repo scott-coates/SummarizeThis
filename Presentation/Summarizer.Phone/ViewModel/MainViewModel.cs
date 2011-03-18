@@ -56,6 +56,13 @@ namespace Summarizer.Phone.ViewModel
             SummarizeCommand = new RelayCommand(() => Summarize()
                 , () => !string.IsNullOrEmpty(InputText));
 
+            string text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. In a diam magna, et vulputate turpis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed purus mi, malesuada eu congue fringilla, interdum at sapien. Suspendisse potenti. Praesent egestas massa felis. Ut vel ipsum lectus, sit amet sollicitudin nunc. Integer at augue leo. In ultrices tristique placerat. Nunc id ullamcorper dui. Fusce ac porttitor elit. Nullam in commodo mi. In gravida blandit dapibus. Donec tincidunt luctus rhoncus. Curabitur sit amet porta erat. Etiam congue cursus felis dignissim adipiscing.
+
+Ut ac pharetra est. Mauris quis ligula tellus, sed vehicula nisi. Duis tincidunt augue non est cursus placerat. Suspendisse congue, metus ut sagittis ultricies, sem nulla sodales mauris, ut pulvinar erat orci sit amet eros. Mauris lobortis consequat tincidunt. Etiam quis neque nulla, ut posuere ipsum. Maecenas nec arcu at neque posuere luctus id vel odio. Nullam sit amet enim urna. Cras eu condimentum augue. Nullam vel mi at enim egestas eleifend. Maecenas sed lectus sed lacus ornare lobortis non et ligula. Etiam at lectus odio, sed cursus arcu. Pellentesque pretium varius ligula, at commodo sapien varius sodales. Vivamus accumsan velit in lectus dictum dictum. Quisque pretium tincidunt ultricies. Sed faucibus, mauris eu iaculis pharetra, metus ligula fermentum metus, non mollis est dolor hendrerit mauris.
+
+Curabitur enim metus, tincidunt eu blandit id, accumsan a urna. Maecenas nec est a ante tincidunt tincidunt. Donec at dolor ligula. Donec non elit tellus, at placerat neque. Cras mattis, leo ut eleifend tincidunt, ante metus fringilla quam, vel hendrerit metus ante nec ipsum. Phasellus pharetra massa quis metus adipiscing at viverra dui feugiat. Integer mi felis, blandit sit amet suscipit nec, ultricies a nisl. Vivamus imperdiet augue sed nibh congue hendrerit. Suspendisse sagittis mi eget augue varius non lobortis enim tempor. Aliquam mollis eleifend dolor, ut gravida erat malesuada non. Donec odio turpis, commodo nec interdum at, luctus vitae urna. Donec ac magna lacus, vitae vehicula erat. Suspendisse lacinia posuere elit, eu rutrum ligula pharetra et. Fusce turpis lorem, pulvinar non ornare in, fringilla nec libero. Etiam vel justo vitae elit viverra imperdiet eget sit amet lacus. Donec eu diam neque.";
+
+            InputText = text;
             if (IsInDesignMode)
             {
                 // Code runs in Blend --> create design time data.
