@@ -45,7 +45,9 @@
                     </Custom:EventTrigger>
                 </Custom:Interaction.Triggers>
             </Button>
-            <TextBox x:Name="txtFull" Margin="59,130,57,345" TextWrapping="Wrap" ToolTipService.ToolTip="Enter in text to summarize" FontSize="16" FontFamily="Segoe WP Light" Text="{Binding InputText, Mode=TwoWay}" />
+            <ScrollViewer Margin="59,130,57,345" Height="Auto"   >
+                <TextBox x:Name="txtFull" Padding="5" VerticalScrollBarVisibility="Auto"   TextWrapping="Wrap" ToolTipService.ToolTip="Enter in text to summarize" FontSize="16" FontFamily="Segoe WP Light" Text="{Binding InputText, Mode=TwoWay}" Height="Auto" />
+            </ScrollViewer>
             <TextBox x:Name="txtNoOfSentences_Copy" Margin="53,0,63,257" TextWrapping="Wrap" ToolTipService.ToolTip="Enter in text to summarize" SelectionBackground="#FF080808" Background="#BF020202" BorderBrush="#BF020202" Text="Select number of sentences to return in results..." Foreground="#FF003EFF" FontSize="18.667" Height="88" VerticalAlignment="Bottom" />
             <TextBlock Height="66" Margin="72,105,79,0" TextWrapping="Wrap" Text="Enter text to be summarized..." VerticalAlignment="Top" Foreground="#FF003EFF"/>
             <local:PhoneSlider x:Name="sentencesReturned" Minimum="1" Maximum="100" Margin="72,0,137,169" Height="82" VerticalAlignment="Bottom" LargeChange="10" SmallChange="1" Value="{Binding Path=NumberOfReturnedSentences, Mode=TwoWay}" Style="{StaticResource sliderStyle}" />
