@@ -1,15 +1,15 @@
 ﻿using Microsoft.Phone.Controls;
+using GalaSoft.MvvmLight.Messaging;
+using System.Text;
+using System;
+using Summarizer.Phone.Model;
+using Summarizer.Phone.ViewModel;
 
-namespace Summarizer.Phone.Views
+namespace Summarizer.Phone
 {
-    /// <summary>
-    /// Description for Page2.
-    /// </summary>
     public partial class SummaryPage : PhoneApplicationPage
     {
-        /// <summary>
-        /// Initializes a new instance of the Page2 class.
-        /// </summary>
+        // Constructor
         public SummaryPage()
         {
             InitializeComponent();

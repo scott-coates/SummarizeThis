@@ -4,7 +4,6 @@ using System.Text;
 using System;
 using Summarizer.Phone.Model;
 using Summarizer.Phone.ViewModel;
-using Summarizer.Phone.Views;
 
 namespace Summarizer.Phone
 {
