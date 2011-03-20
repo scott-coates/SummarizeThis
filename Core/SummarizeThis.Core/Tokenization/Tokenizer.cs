@@ -14,7 +14,7 @@ namespace SummarizeThis.Core.Tokenization
 
         private const string _breakOnWordsPattern = "\\W+";
         //http://stackoverflow.com/questions/1936388/what-is-a-regular-expression-for-parsing-out-individual-sentences
-        private const string _breakOnSentencesPattern = @"(\S.+?[.!?])(?=\s+|$)";
+        private const string _breakOnSentencesPattern = @"(\S.+?[.!?\r\n])(?=\s+|$)";
 
         public Tokenizer(IStopWordService stopWordService, IStemmer stemmer)
         {

@@ -21,7 +21,8 @@ namespace SummarizeThis.Tests.Unit
         public void Setup()
         {
             _stopWordService = new Mock<IStopWordService>();
-            _stopWordService.Setup(x => x.CleanStopWords(It.IsAny<IEnumerable<string>>())).Returns((IEnumerable<string> input) => input); //just return
+            _stopWordService.Setup(x => x.CleanStopWords(It.IsAny<IEnumerable<string>>())).Returns(
+                (IEnumerable<string> input) => input); //just return
             _stemmer = new Mock<IStemmer>();
             _stemmer.Setup(x => x.Stem(It.IsAny<string>())).Returns((string x) => x);
             _tokenizer = new Tokenizer(_stopWordService.Object, _stemmer.Object);
@@ -75,6 +76,16 @@ namespace SummarizeThis.Tests.Unit
         public void TestWithCRLF()
         {
             string input = "Hello World!" + Environment.NewLine + "Bye World?";
+
+            IEnumerable<string> output = _tokenizer.TokenizeSentences(input);
+
+            Assert.That(output.Count() == 2);
+        }
+
+        [Test]
+        public void TestWithCRLFAndNotEndingPunctuation()
+        {
+            string input = "Hello World" + Environment.NewLine + "Bye World" + Environment.NewLine;
 
             IEnumerable<string> output = _tokenizer.TokenizeSentences(input);
 
