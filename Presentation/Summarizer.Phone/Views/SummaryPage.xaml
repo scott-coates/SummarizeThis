@@ -17,7 +17,7 @@
                             d:DesignHeight="768"
                             shell:SystemTray.IsVisible="True"
                             DataContext="{Binding Summary, Source={StaticResource Locator}}">
-	
+
 
     <!--LayoutRoot contains the root grid where all other page content is placed-->
     <Grid x:Name="LayoutRoot"
@@ -45,13 +45,17 @@
             <TextBlock Height="66" Margin="72,6,79,0" TextWrapping="Wrap" Text="Summarized Text" VerticalAlignment="Top" Foreground="#FF003EFF"/>
             <TextBlock Foreground="#FF003EFF" Height="33" Margin="32,447,240,0" Text="Number of sentences" TextWrapping="Wrap" VerticalAlignment="Top" />
             <TextBlock Foreground="#FF003EFF" Height="33" Margin="246,447,140,0" Text="{Binding Path=NumberOfSentences}" TextWrapping="Wrap" VerticalAlignment="Top" TextAlignment="Right" />
-            <ListBox Height="100" Margin="32,0,8,98" VerticalAlignment="Bottom" BorderThickness="2" BorderBrush="#FF003EFF" ItemsSource="{Binding Path=WordFrequency}">
+            <ListBox  Height="100" Margin="32,0,8,98" VerticalAlignment="Bottom" BorderThickness="2" BorderBrush="#FF003EFF" ItemsSource="{Binding Path=WordFrequency}">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel>
-                            <TextBlock Text="{Binding Path=Key}" />
-                            <TextBlock Text="{Binding Path=Value}"/>
-                        </StackPanel>
+                        <Grid Margin="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition MinWidth="200"/>
+                                <ColumnDefinition  Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Margin="0,0,20,0" Text="{Binding Path=Key}" Grid.Column="0"/>
+                            <TextBlock Text="{Binding Path=Value}" Grid.Column="1"/>
+                        </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>

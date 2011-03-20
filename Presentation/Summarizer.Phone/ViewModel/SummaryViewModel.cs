@@ -24,10 +24,11 @@ namespace Summarizer.Phone.ViewModel
         /// </summary>
         public SummaryViewModel()
         {
-            ////if (IsInDesignMode)
-            ////{
-            ////    // Code runs in Blend --> create design time data.
-            ////}
+            if (IsInDesignMode)
+            {
+                // Code runs in Blend --> create design time data.
+                WordFrequency = new Dictionary<string, int> { { "Hello", 4 }, { "World", 2 } };
+            }
             ////else
             ////{
             ////    // Code runs "for real": Connect to service, etc...
