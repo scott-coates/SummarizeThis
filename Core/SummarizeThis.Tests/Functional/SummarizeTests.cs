@@ -155,5 +155,19 @@ As always, if you have any questions please do not hesitate to ask.";
 
             Assert.AreEqual(input, result.SummarizedText);
         }
+
+        [Test]
+        public void CanSummarizeBulletPoints()
+        {
+            const string input =
+                @"Insider information on the latest technology trends
+Consumer electronics product giveaways
+Access to a community of like-minded technophiles
+Discounts from CEA member companies";
+
+            TextSummary result = _summarizer.Summarize(input, 2);
+
+            Assert.AreEqual(4, result.SentenceScores.Count());
+        }
     }
 }
