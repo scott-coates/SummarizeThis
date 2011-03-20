@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Messaging;
 using Summarizer.Phone.Model;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Summarizer.Phone.ViewModel
 {
@@ -66,7 +67,7 @@ namespace Summarizer.Phone.ViewModel
         {
             SummarizedText = summary.SummarizedText;
             NumberOfSentences = summary.ReturnedSentences;
-            WordFrequency = summary.WordFrequency;
+            WordFrequency = summary.WordFrequency.OrderBy(x => x.Key).ToDictionary(x => x.Key,x => x.Value);
         }
     }
 }
