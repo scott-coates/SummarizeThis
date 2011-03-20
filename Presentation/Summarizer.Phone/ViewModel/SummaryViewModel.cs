@@ -1,6 +1,7 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 using Summarizer.Phone.Model;
+using System.Collections.Generic;
 
 namespace Summarizer.Phone.ViewModel
 {
@@ -51,6 +52,7 @@ namespace Summarizer.Phone.ViewModel
 
         public string SummarizedText { get; set; }
         public int NumberOfSentences { get; set; }
+        public Dictionary<string, int> WordFrequency { get; set; }
 
         ////public override void Cleanup()
         ////{
@@ -63,6 +65,7 @@ namespace Summarizer.Phone.ViewModel
         {
             SummarizedText = summary.SummarizedText;
             NumberOfSentences = summary.ReturnedSentences;
+            WordFrequency = summary.WordFrequency;
         }
     }
 }

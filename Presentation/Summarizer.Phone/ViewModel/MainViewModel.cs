@@ -4,6 +4,7 @@ using System.Windows;
 using GalaSoft.MvvmLight.Messaging;
 using Summarizer.Phone.Model;
 using SummarizerService = SummarizeThis.Core.Summarization.Summarizer;
+using SummarizeThis.Core.Summarization;
 namespace Summarizer.Phone.ViewModel
 {
     /// <summary>
@@ -80,9 +81,10 @@ Curabitur enim metus, tincidunt eu blandit id, accumsan a urna. Maecenas nec est
                 NumberOfReturnedSentences = 1;
             }
 
-            string summarizedText = _summarizer.Summarize(InputText, NumberOfReturnedSentences).SummarizedText;
+            TextSummary textSummary = _summarizer.Summarize(InputText, NumberOfReturnedSentences);
+            string summarizedText = textSummary.SummarizedText;
 
-            var summary = new Summary(summarizedText, NumberOfReturnedSentences);
+            var summary = new Summary(summarizedText, NumberOfReturnedSentences,textSummary.AllWordFrequency);
 
             Messenger.Default.Send(summary);
         }
