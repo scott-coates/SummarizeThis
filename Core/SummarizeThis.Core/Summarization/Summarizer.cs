@@ -40,9 +40,13 @@ namespace SummarizeThis.Core.Summarization
             IEnumerable<SentenceFrequency> sentencesScores =
                 _frequencer.GetSentencesWithMostFrequentWords(input, mostFrequentWords);
 
-            var highestRankedSentences = sentencesScores.OrderByDescending(x => x.Score).Take(numberOfSentences).OrderBy(x => x.SentenceNumber);
+            var highestRankedSentences =
+                sentencesScores.OrderByDescending(x => x.Score).Take(numberOfSentences).OrderBy(x => x.SentenceNumber);
 
-            var summarizedText = string.Join(" ", highestRankedSentences.Select(x => x.Sentence).ToArray());
+            //replacing space and eol if someone is passing in bullet points with no ending
+            //puncuation
+            var summarizedText = string.Join(" ", highestRankedSentences.Select(x => x.Sentence).ToArray())
+                .Replace("\r ", "\r");
 
             return new TextSummary(sentencesScores, highestRankedSentences, wordFrequency, mostFrequentWords,
                                    numberOfSentences, summarizedText);
