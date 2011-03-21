@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using SummarizeThis.Core.Summarization;
 using SummarizeThis.Core.Summarization.Interfaces;
+using System;
 
 namespace SummarizeThis.Tests.Functional
 {
@@ -168,6 +169,7 @@ Discounts from CEA member companies";
             TextSummary result = _summarizer.Summarize(input, 2);
 
             Assert.AreEqual(4, result.SentenceScores.Count());
+            Assert.AreEqual("Insider information on the latest technology trends\rAccess to a community of like-minded technophiles", result.SummarizedText);
         }
     }
 }

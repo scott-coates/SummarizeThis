@@ -48,6 +48,11 @@ namespace SummarizeThis.Core.Summarization
             var summarizedText = string.Join(" ", highestRankedSentences.Select(x => x.Sentence).ToArray())
                 .Replace("\r ", "\r");
 
+            if(summarizedText.EndsWith("\r"))
+            {
+                summarizedText = summarizedText.Remove(summarizedText.Length - 1);
+            }
+
             return new TextSummary(sentencesScores, highestRankedSentences, wordFrequency, mostFrequentWords,
                                    numberOfSentences, summarizedText);
         }
